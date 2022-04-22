@@ -1,9 +1,14 @@
+import { useContext } from "react";
+import { BooksContext } from "../../context/books.context";
 import BookComponent from "../book/book.component";
 
-const BooksList = ({ bookList }) => {
+const BooksList = () => {
+
+    const { filteredBookList } = useContext(BooksContext);
+
     return (
         <div className="books-list-container">
-            {bookList.map(book => {
+            {filteredBookList.map(book => {
                 return (
                     <BookComponent book={book} />
                 )

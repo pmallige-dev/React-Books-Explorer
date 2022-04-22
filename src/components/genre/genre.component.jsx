@@ -1,11 +1,14 @@
+import { useState, useCallback, useEffect, useRef, useContext } from "react";
 import SearchBox from "../search-box/search-box.component";
 import BooksList from "../books-list/books-list.component";
+import { BooksContext } from "../../context/books.context";
 
-const Genre = ({ onChangeHandler, bookList }) => {
+const Genre = () => {
     return (
         <div className="genre-container">
-            <SearchBox onChangeHandler={onChangeHandler}/>
-            <BooksList bookList={bookList}/>
+            <SearchBox />
+            <BooksList />
+            <div />
         </div>
     )
 }

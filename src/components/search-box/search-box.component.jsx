@@ -1,6 +1,13 @@
+import { useContext } from "react";
+import { BooksContext } from "../../context/books.context";
 
 
-const SearchBox = ({ onChangeHandler }) => {
+const SearchBox = () => {
+
+    const { onSearchChange } = useContext(BooksContext);
+
+    const onChangeHandler = onSearchChange
+
     return (
         <input
             placeholder="Search Books"

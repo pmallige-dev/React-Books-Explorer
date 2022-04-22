@@ -1,9 +1,10 @@
 
 const BookComponent = ({ book }) => {
-    const { title } = book;
-    return(
+    const { title, id } = book;
+
+    return (
         <div className="book-container">
-            <li>{title}</li>
+            <li key={id}>{title}</li>
         </div>
     )
 }
