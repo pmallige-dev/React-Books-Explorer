@@ -1,9 +1,13 @@
+import BookComponent from "../book/book.component";
 
-
-const BooksList = () => {
+const BooksList = ({ bookList }) => {
     return (
         <div className="books-list-container">
-            <li>Book 1</li>
+            {bookList.map(book => {
+                return (
+                    <BookComponent book={book} />
+                )
+            })}
         </div>
     )
 }

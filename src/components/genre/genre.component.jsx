@@ -1,11 +1,11 @@
 import SearchBox from "../search-box/search-box.component";
 import BooksList from "../books-list/books-list.component";
 
-const Genre = () => {
+const Genre = ({ onChangeHandler, bookList }) => {
     return (
         <div className="genre-container">
-            <SearchBox />
-            <BooksList />
+            <SearchBox onChangeHandler={onChangeHandler}/>
+            <BooksList bookList={bookList}/>
         </div>
     )
 }
