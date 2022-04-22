@@ -1,8 +1,11 @@
 
 
-const SearchBox = () => {
-    return(
-        <input />
+const SearchBox = ({ onChangeHandler }) => {
+    return (
+        <input
+            placeholder="Search Books"
+            onChange={onChangeHandler}
+        />
     )
 }
 
