@@ -2,23 +2,15 @@ import { createContext, useState, useEffect } from "react";
 
 export const BooksContext = createContext({
     page: 1,
-    setPage: () => null,
-    isFirstLoad: true,
-    setIsFirstLoad: () => null,
     isLoading: true,
-    setIsLoading: () => null,
     searchField: '',
-    setSearchField: () => null,
     bookList: [],
-    setBookList: () => null,
     filteredBookList: [],
-    setFilteredBookList: () => null,
 })
 
 export const BooksProvider = ({ children }) => {
 
     const [page, setPage] = useState(1);
-    const [isFirstLoad, setIsFirstLoad] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
     const [searchField, setSearchField] = useState('');
     const [bookList, setBookList] = useState([]);
@@ -31,20 +23,18 @@ export const BooksProvider = ({ children }) => {
 
     const fetchBooks = async () => {
         const bookResults = await fetchingBooksFromAPI(page);
-        storingAPIDataInSession(bookResults, setBookList);
-        setIsFirstLoad(false);
+        storingAPIDataInSessionAndSettingBookList(bookResults, setBookList);
+        // setIsFirstLoad(false);
         setIsLoading(false);
     };
 
-    const storingAPIDataInSession = (bookResults, setBookList) => {
+    const storingAPIDataInSessionAndSettingBookList = (bookResults, setBookList) => {
         window.sessionStorage.setItem(`bookResultsSessionPage${page}`, JSON.stringify(bookResults));
         const newGetSessionStoredAPIData = JSON.parse(window.sessionStorage.getItem(`bookResultsSessionPage${page}`)) || [];
-        if (bookList.length == 0) {
+        if (bookList.length == 0)
             setBookList(newGetSessionStoredAPIData);
-        }
-        else {
+        else
             setBookList(bookList => bookList.concat(newGetSessionStoredAPIData));
-        }
     }
 
     const fetchingBooksFromAPI = async (page) => {
@@ -64,24 +54,24 @@ export const BooksProvider = ({ children }) => {
         const NewFilteredBookList = bookList.filter((book) => {
             return book.title.toLocaleLowerCase().includes(searchField);
         });
+        // setPage(page + 1);
         setFilteredBookList(NewFilteredBookList);
     }, [bookList, searchField]);
 
+    useEffect(() => {
+        setPage(page + 1)
+    }, [searchField])
+
     const onSearchChange = (event) => {
-        console.log(event);
         const searchFieldString = event.target.value.toLocaleLowerCase();
         setSearchField(searchFieldString);
     };
 
     const value = {
         page,
-        setPage,
         searchField,
-        setSearchField,
         bookList,
-        setBookList,
         filteredBookList,
-        setFilteredBookList,
         onSearchChange,
         isLoading
     }
