@@ -1,9 +1,17 @@
+import { categories } from "../../data/categories";
+import CategoryButton from "../category-button/category-button.component";
+
 const Home = () => {
-    return(
+    console.log(categories);
+    return (
         <div className="homepage-container">
             <h2>Books Explorer</h2>
             <div className="category-list-container">
-                <button>Categories</button>
+                {
+                    categories.map((category) => (
+                        <CategoryButton key={category.id} category={category} />
+                    ))
+                }
             </div>
         </div>
     )

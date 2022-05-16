@@ -64,8 +64,6 @@ export const BooksProvider = ({ children }) => {
         setFilteredBookList(NewFilteredBookList);
     }, [bookList]);
 
-    console.log(bookList);
-
     const onInputChange = (event) => {
         const searchFieldString = event.target.value.replace(' ', '%20');
         setSearchField(searchFieldString);
