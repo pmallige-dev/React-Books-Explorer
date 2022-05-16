@@ -38,10 +38,17 @@ export const BooksProvider = ({ children }) => {
     }
 
     const fetchingBooksFromAPI = async (page) => {
-        const fetchUrl = await fetch(`http://skunkworks.ignitesol.com:8000/books/?page=${page}`);
+        const fetchUrl = await fetch(`https://gutendex.com/books/?page=${page}`);
         const response = await fetchUrl.json();
         const bookResults = await response.results;
         return bookResults;
+    }
+
+    const fetchingBooksFromAPIBasedOnSearch = async () => {
+        const fetchUrl = await fetch(`https://gutendex.com/books?search=${searchField}`);
+        const response = await fetchUrl.json();
+        const bookSearchresults = await response.results;
+        setBookList(bookSearchresults);
     }
 
     const handleScroll = () => {
@@ -52,15 +59,21 @@ export const BooksProvider = ({ children }) => {
 
     useEffect(() => {
         const NewFilteredBookList = bookList.filter((book) => {
-            return book.title.toLocaleLowerCase().includes(searchField);
+            return book.title.toLocaleLowerCase();
         });
-        // setPage(page + 1);
         setFilteredBookList(NewFilteredBookList);
-    }, [bookList, searchField]);
+    }, [bookList]);
 
-    const onSearchChange = (event) => {
-        const searchFieldString = event.target.value.toLocaleLowerCase();
+    console.log(bookList);
+
+    const onInputChange = (event) => {
+        const searchFieldString = event.target.value.replace(' ', '%20');
         setSearchField(searchFieldString);
+    }
+
+    const onSearchSubmit = (event) => {
+        event.preventDefault();
+        fetchingBooksFromAPIBasedOnSearch();
     };
 
     const value = {
@@ -68,7 +81,8 @@ export const BooksProvider = ({ children }) => {
         searchField,
         bookList,
         filteredBookList,
-        onSearchChange,
+        onInputChange,
+        onSearchSubmit,
         isLoading
     }
 

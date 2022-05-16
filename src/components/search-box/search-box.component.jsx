@@ -4,15 +4,19 @@ import { BooksContext } from "../../context/books.context";
 
 const SearchBox = () => {
 
-    const { onSearchChange } = useContext(BooksContext);
+    const { onSearchSubmit, onInputChange } = useContext(BooksContext);
 
-    const onChangeHandler = onSearchChange
+    const onSubmitHandler = onSearchSubmit;
+    const onChangeHandler = onInputChange;
 
     return (
-        <input
-            placeholder="Search Books"
-            onChange={onChangeHandler}
-        />
+        <div className="SearchBox-container" onSubmit={onSubmitHandler}>
+            <form id="submit">
+                <input onChange={onChangeHandler} placeholder="Search Books" />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
     )
 }
 
