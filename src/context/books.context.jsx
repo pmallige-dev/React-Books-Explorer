@@ -58,10 +58,6 @@ export const BooksProvider = ({ children }) => {
         setFilteredBookList(NewFilteredBookList);
     }, [bookList, searchField]);
 
-    useEffect(() => {
-        setPage(page + 1)
-    }, [searchField])
-
     const onSearchChange = (event) => {
         const searchFieldString = event.target.value.toLocaleLowerCase();
         setSearchField(searchFieldString);
