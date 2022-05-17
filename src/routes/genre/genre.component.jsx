@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import SearchBox from "../search-box/search-box.component";
-import BooksList from "../books-list/books-list.component";
+import SearchBox from "../../components/search-box/search-box.component";
+import BooksList from "../../components/books-list/books-list.component";
 import { BooksContext } from "../../context/books.context";
 
 const Genre = () => {

@@ -1,8 +1,7 @@
 import { categories } from "../../data/categories";
-import CategoryButton from "../category-button/category-button.component";
+import CategoryButton from "../../components/category-button/category-button.component";
 
 const Home = () => {
-    console.log(categories);
     return (
         <div className="homepage-container">
             <h2>Books Explorer</h2>

@@ -15,37 +15,39 @@ export const BooksProvider = ({ children }) => {
     const [searchField, setSearchField] = useState('');
     const [bookList, setBookList] = useState([]);
     const [filteredBookList, setFilteredBookList] = useState(bookList);
+    const [categorySelected, setCategorySelected] = useState('');
 
     useEffect(() => {
         fetchBooks();
         window.addEventListener("scroll", handleScroll);
-    }, [page]);
+    }, [page, categorySelected]);
 
     const fetchBooks = async () => {
         const bookResults = await fetchingBooksFromAPI(page);
-        storingAPIDataInSessionAndSettingBookList(bookResults, setBookList);
+        setBookList(bookResults);
+        // storingAPIDataInSessionAndSettingBookList(bookResults, setBookList);
         // setIsFirstLoad(false);
         setIsLoading(false);
     };
 
     const storingAPIDataInSessionAndSettingBookList = (bookResults, setBookList) => {
-        window.sessionStorage.setItem(`bookResultsSessionPage${page}`, JSON.stringify(bookResults));
-        const newGetSessionStoredAPIData = JSON.parse(window.sessionStorage.getItem(`bookResultsSessionPage${page}`)) || [];
-        if (bookList.length == 0)
+        window.sessionStorage.setItem(`bookResultsSessionPage${categorySelected}${page}`, JSON.stringify(bookResults));
+        const newGetSessionStoredAPIData = JSON.parse(window.sessionStorage.getItem(`bookResultsSessionPage${categorySelected}${page}`)) || [];
+        if (bookList.length === 0)
             setBookList(newGetSessionStoredAPIData);
         else
             setBookList(bookList => bookList.concat(newGetSessionStoredAPIData));
     }
 
     const fetchingBooksFromAPI = async (page) => {
-        const fetchUrl = await fetch(`https://gutendex.com/books/?page=${page}`);
+        const fetchUrl = await fetch(`https://gutendex.com/books/?page=${page}&topic=${categorySelected}`);
         const response = await fetchUrl.json();
         const bookResults = await response.results;
         return bookResults;
     }
 
     const fetchingBooksFromAPIBasedOnSearch = async () => {
-        const fetchUrl = await fetch(`https://gutendex.com/books?search=${searchField}`);
+        const fetchUrl = await fetch(`https://gutendex.com/books?search=${searchField}&topic=${categorySelected}`);
         const response = await fetchUrl.json();
         const bookSearchresults = await response.results;
         setBookList(bookSearchresults);
@@ -64,6 +66,10 @@ export const BooksProvider = ({ children }) => {
         setFilteredBookList(NewFilteredBookList);
     }, [bookList]);
 
+    const onCategorySelected = (category) => {
+        setCategorySelected(category.replace(' ', '%20'));
+    }
+
     const onInputChange = (event) => {
         const searchFieldString = event.target.value.replace(' ', '%20');
         setSearchField(searchFieldString);
@@ -79,6 +85,7 @@ export const BooksProvider = ({ children }) => {
         searchField,
         bookList,
         filteredBookList,
+        onCategorySelected,
         onInputChange,
         onSearchSubmit,
         isLoading

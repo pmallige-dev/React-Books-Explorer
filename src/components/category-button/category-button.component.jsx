@@ -1,11 +1,21 @@
+import { useNavigate } from "react-router-dom";
+import { Fragment, useContext } from "react";
+import { BooksContext } from "../../context/books.context";
 
-const CategoryButton = ({category}) => {
-    const { title } = category;
+const CategoryButton = ({ category }) => {
+    const { title, route } = category;
+    const navigate = useNavigate();
+    const { onCategorySelected } = useContext(BooksContext);
 
-    return(
-        <div className="category-button-container">
-            <button>{title}</button>
-        </div>
+    const navigationHandler = () => navigate(route);
+    const categoryHandler = () => onCategorySelected(title);
+
+    return (
+        <Fragment>
+            <button onClick={() => { navigationHandler(); categoryHandler(); }}>{title}</button>
+            <br />
+        </Fragment>
+        
     )
 }
 

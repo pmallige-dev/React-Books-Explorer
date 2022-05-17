@@ -1,13 +1,13 @@
 import { Route, Routes } from 'react-router';
-import Home from './components/home/home.component';
-import Genre from './components/genre/genre.component';
+import Home from './routes/home/home.component';
+import Genre from './routes/genre/genre.component';
 import './App.css';
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="genre" element={<Genre />} />
+      <Route path="genre/*" element={<Genre />} />
     </Routes>
   );
 }
