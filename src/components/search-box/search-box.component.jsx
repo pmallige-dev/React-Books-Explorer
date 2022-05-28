@@ -4,7 +4,7 @@ import { BooksContext } from "../../context/books.context";
 
 const SearchBox = () => {
 
-    const { onSearchSubmit, onInputChange } = useContext(BooksContext);
+    const { onSearchSubmit, onInputChange, searchField } = useContext(BooksContext);
 
     const onSubmitHandler = onSearchSubmit;
     const onChangeHandler = onInputChange;
@@ -12,7 +12,7 @@ const SearchBox = () => {
     return (
         <div className="SearchBox-container" onSubmit={onSubmitHandler}>
             <form id="submit">
-                <input onChange={onChangeHandler} placeholder="Search Books" />
+                <input value={searchField} onChange={onChangeHandler} placeholder="Search Books" />
                 <button type="submit">Submit</button>
             </form>
         </div>

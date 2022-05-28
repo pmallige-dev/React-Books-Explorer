@@ -10,7 +10,7 @@ const BooksList = () => {
         <div className="books-list-container">
             {filteredBookList.map(book => {
                 return (
-                    <BookComponent book={book} />
+                    <BookComponent key={book.id} book={book} />
                 )
             })}
         </div>

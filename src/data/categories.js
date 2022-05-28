@@ -20,11 +20,6 @@ export const categories = [
         "route": "genre/Education", 
     },
     {
-        "id": 5,
-        "title": "Fine arts",
-        "route": "genre/FineArts", 
-    },
-    {
         "id": 6,
         "title": "General works",
         "route": "genre/GeneralWorks", 
@@ -33,16 +28,6 @@ export const categories = [
         "id": 7,
         "title": "History",
         "route": "genre/History", 
-    },
-    {
-        "id": 8,
-        "title": "Language and Literature",
-        "route": "genre/LanguageLiterature", 
-    },
-    {
-        "id": 9,
-        "title": "Psychology and philosophy",
-        "route": "genre/PsychologyPhilosophy", 
     },
     {
         "id": 10,
