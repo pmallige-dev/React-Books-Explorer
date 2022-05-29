@@ -32,27 +32,27 @@ export const BooksProvider = ({ children }) => {
     const urlSearchParams = `?search=${searchField}&topic=${categorySelected}`;
     const urlCategoryParams = `/?page=${page}&topic=${categorySelected}`;
 
+    // To fetch Books 
     useEffect(() => {
         fetchBooks();
-        // const categoryFromStorage = localStorage.getItem('storedCategory')
+        // TODO - Fix the functionality to load the book list according to the category when refreshed.
         if (window.performance) {
-            console.log(`hit the refresh page if loop and category selected is ${categorySelected}`);
             if (performance.navigation.type == 1) {
                 setBookList(getLocallyStoredFirstPageAPIResults());
             } else {
                 return
-                // locallyStoreFirstPageAPIResults()
-                //   alert( "This page is not reloaded");
             }
         }    
     }, [page, categorySelected]);
 
+    // To achieve infinite scroll
     useEffect(() => {
         if (submitSearch !== true) {
             window.addEventListener("scroll", handleScroll);
         }
     }, []);
 
+    // To display list of books
     useEffect(() => {
         const NewFilteredBookList = bookList.filter((book) => {
             return book.title.toLocaleLowerCase();
@@ -67,16 +67,13 @@ export const BooksProvider = ({ children }) => {
                 const fetchUrl = await fetch(`${mainUrl}${urlCategoryParams}`);
                 const response = await fetchUrl.json();
                 const bookResults = await response.results;
-                console.log(bookResults);
 
                 locallyStoreFirstPageAPIResults(bookResults);
 
                 setBookList((oldBooksList) => {
                     if (page === 1 && bookResults !== []) {
-                        console.log('hit first if condition under setBooklist');
                         return getLocallyStoredFirstPageAPIResults()
                     } else {
-                        console.log('hit first if condition under setBooklist');
                         return [...oldBooksList, ...bookResults]
                     }
                 })
@@ -101,7 +98,6 @@ export const BooksProvider = ({ children }) => {
 
     const getLocallyStoredFirstPageAPIResults = () => {
         const getLocalStoredAPIData = JSON.parse(window.localStorage.getItem(`bookResultsLocalStore${categorySelected}`)) || [];
-        console.log(getLocalStoredAPIData);
         return getLocalStoredAPIData;
     }
 
@@ -114,7 +110,6 @@ export const BooksProvider = ({ children }) => {
     const onCategorySelected = (category) => {
         setBookList(initialState.bookList)
         setPage(initialState.page)
-        // localStorage.setItem('storedCategory', category);
         setCategorySelected(category.replace(' ', '%20'));
     }
 
