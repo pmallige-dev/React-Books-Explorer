@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { BooksContext } from "../../context/books.context";
+import './search-box.styles.css'
 
 
 const SearchBox = () => {
@@ -12,8 +13,12 @@ const SearchBox = () => {
     return (
         <div className="SearchBox-container" onSubmit={onSubmitHandler}>
             <form id="submit">
-                <input value={searchField} onChange={onChangeHandler} placeholder="Search Books" />
-                <button type="submit">Submit</button>
+                <div className="ui icon input">
+                    <input value={searchField} onChange={onChangeHandler} placeholder="Search Books" />
+                </div>
+                <button className="ui button search" type="submit">
+                    Search
+                </button>
             </form>
         </div>
 

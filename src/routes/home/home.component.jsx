@@ -1,5 +1,6 @@
 import { categories } from "../../data/categories";
 import CategoryButton from "../../components/category-button/category-button.component";
+import './home.styles.css';
 
 const Home = () => {
     return (

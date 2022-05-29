@@ -12,7 +12,7 @@ const CategoryButton = ({ category }) => {
 
     return (
         <Fragment>
-            <button onClick={() => { navigationHandler(); categoryHandler(); }}>{title}</button>
+            <button className="ui button" onClick={() => { navigationHandler(); categoryHandler(); }}>{title}</button>
             <br />
         </Fragment>
         

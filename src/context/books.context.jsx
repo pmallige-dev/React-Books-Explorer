@@ -55,6 +55,7 @@ export const BooksProvider = ({ children }) => {
                 const fetchUrl = await fetch(`${mainUrl}${urlCategoryParams}`);
                 const response = await fetchUrl.json();
                 const bookResults = await response.results;
+                
                 setBookList((oldBooksList) => {
                     if (page === 1 && bookResults !== []) {
                         return bookResults;

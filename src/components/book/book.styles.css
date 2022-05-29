@@ -1,0 +1,14 @@
+/* .ui.card {
+    width: 50vw;
+    max-width: 1170px;
+    margin: 0 auto;
+    display: grid;
+    gap: 2rem;
+    padding: 20px;
+} */
+
+.image {
+    object-fit: scale-down;
+    /* width: 100px; */
+    /* overflow: hidden; */
+}
