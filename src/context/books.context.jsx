@@ -47,6 +47,7 @@ export const BooksProvider = ({ children }) => {
 
     // To achieve infinite scroll
     useEffect(() => {
+        // TODO - Fix the submit search infinite scroll issue
         if (submitSearch !== true) {
             window.addEventListener("scroll", handleScroll);
         }
