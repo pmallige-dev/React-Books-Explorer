@@ -6,7 +6,7 @@ const Home = () => {
     return (
         <div className="homepage-container">
             <h2>Books Explorer</h2>
-            <div className="category-list-container">
+            <div className="category-list-container ui cards">
                 {
                     categories.map((category) => (
                         <CategoryButton key={category.id} category={category} />

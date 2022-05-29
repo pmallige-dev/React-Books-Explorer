@@ -8,7 +8,7 @@ const BooksList = () => {
     const { filteredBookList } = useContext(BooksContext);
 
     return (
-        <div className="books-list-container ui four column grid">
+        <div className="books-list-container ui cards">
             {filteredBookList.map(book => {
                 return (
                     <BookComponent key={book.id} book={book} />

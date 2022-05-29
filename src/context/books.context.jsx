@@ -34,6 +34,17 @@ export const BooksProvider = ({ children }) => {
 
     useEffect(() => {
         fetchBooks();
+        // const categoryFromStorage = localStorage.getItem('storedCategory')
+        if (window.performance) {
+            console.log(`hit the refresh page if loop and category selected is ${categorySelected}`);
+            if (performance.navigation.type == 1) {
+                setBookList(getLocallyStoredFirstPageAPIResults());
+            } else {
+                return
+                // locallyStoreFirstPageAPIResults()
+                //   alert( "This page is not reloaded");
+            }
+        }    
     }, [page, categorySelected]);
 
     useEffect(() => {
@@ -49,17 +60,23 @@ export const BooksProvider = ({ children }) => {
         setFilteredBookList(NewFilteredBookList);
     }, [bookList]);
 
+    
     const fetchBooks = async () => {
         try {
             if (categorySelected !== '') {
                 const fetchUrl = await fetch(`${mainUrl}${urlCategoryParams}`);
                 const response = await fetchUrl.json();
                 const bookResults = await response.results;
-                
+                console.log(bookResults);
+
+                locallyStoreFirstPageAPIResults(bookResults);
+
                 setBookList((oldBooksList) => {
                     if (page === 1 && bookResults !== []) {
-                        return bookResults;
+                        console.log('hit first if condition under setBooklist');
+                        return getLocallyStoredFirstPageAPIResults()
                     } else {
+                        console.log('hit first if condition under setBooklist');
                         return [...oldBooksList, ...bookResults]
                     }
                 })
@@ -78,6 +95,16 @@ export const BooksProvider = ({ children }) => {
         setBookList(bookSearchresults);
     }
 
+    const locallyStoreFirstPageAPIResults = (bookResults) => {
+        window.localStorage.setItem(`bookResultsLocalStore${categorySelected}`, JSON.stringify(bookResults));
+    }
+
+    const getLocallyStoredFirstPageAPIResults = () => {
+        const getLocalStoredAPIData = JSON.parse(window.localStorage.getItem(`bookResultsLocalStore${categorySelected}`)) || [];
+        console.log(getLocalStoredAPIData);
+        return getLocalStoredAPIData;
+    }
+
     const handleScroll = () => {
         if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.offsetHeight) {
             setPage(page + 1);
@@ -87,6 +114,7 @@ export const BooksProvider = ({ children }) => {
     const onCategorySelected = (category) => {
         setBookList(initialState.bookList)
         setPage(initialState.page)
+        // localStorage.setItem('storedCategory', category);
         setCategorySelected(category.replace(' ', '%20'));
     }
 
