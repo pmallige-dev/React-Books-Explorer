@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { categories } from '../data/categories'
 
 export const BooksContext = createContext({
     page: 1,
@@ -12,7 +13,7 @@ export const BooksProvider = ({ children }) => {
 
     const initialState = {
         page: 1,
-        isLoading: true,
+        isLoading: false,
         searchField: '',
         bookList: [],
         filteredBookList: [],
@@ -31,25 +32,29 @@ export const BooksProvider = ({ children }) => {
     const mainUrl = `https://gutendex.com/books`;
     const urlSearchParams = `?search=${searchField}&topic=${categorySelected}`;
     const urlCategoryParams = `/?page=${page}&topic=${categorySelected}`;
+    const windowUrl = window.location.href;   
+   
 
     // To fetch Books 
     useEffect(() => {
-        fetchBooks();
-        // TODO - Fix the functionality to load the book list according to the category when refreshed.
-        if (window.performance) {
-            if (performance.navigation.type == 1) {
-                setBookList(getLocallyStoredFirstPageAPIResults());
-            } else {
-                return
-            }
-        }    
+        fetchBooks();  
     }, [page, categorySelected]);
+
+    // To set the category selected as the category we see in the URL so that the respective books are displayed upon page load/refresh
+    useEffect(() => {
+        categories.map((category) => {
+            if(windowUrl.includes(category.title)) {
+                setCategorySelected(category.title);
+            }
+        })
+    }, []);
 
     // To achieve infinite scroll
     useEffect(() => {
         // TODO - Fix the submit search infinite scroll issue
-        if (submitSearch !== true) {
+        if (submitSearch === false) {
             window.addEventListener("scroll", handleScroll);
+            setIsLoading(true);
         }
     }, []);
 
@@ -60,7 +65,6 @@ export const BooksProvider = ({ children }) => {
         });
         setFilteredBookList(NewFilteredBookList);
     }, [bookList]);
-
     
     const fetchBooks = async () => {
         try {
@@ -123,6 +127,7 @@ export const BooksProvider = ({ children }) => {
     const onSearchSubmit = (event) => {
         event.preventDefault();
         fetchingBooksFromAPIBasedOnSearch();
+        setSubmitSearch(true);
     };
 
     const value = {
