@@ -13,12 +13,12 @@ export const BooksProvider = ({ children }) => {
 
     const initialState = {
         page: 1,
-        isLoading: false,
+        isLoading: true,
         searchField: '',
         bookList: [],
         filteredBookList: [],
         categorySelected: '',
-        submitSearch: false,
+        submitMaadu: false,
     }
 
     const [page, setPage] = useState(initialState.page);
@@ -27,23 +27,26 @@ export const BooksProvider = ({ children }) => {
     const [bookList, setBookList] = useState(initialState.bookList);
     const [filteredBookList, setFilteredBookList] = useState(initialState.bookList);
     const [categorySelected, setCategorySelected] = useState(initialState.categorySelected);
-    const [submitSearch, setSubmitSearch] = useState(initialState.submitSearch);
+    const [submitMaadu, setSubmitMaadu] = useState(initialState.submitMaadu);
 
     const mainUrl = `https://gutendex.com/books`;
     const urlSearchParams = `?search=${searchField}&topic=${categorySelected}`;
     const urlCategoryParams = `/?page=${page}&topic=${categorySelected}`;
-    const windowUrl = window.location.href;   
-   
+
+    // let submitSearch = false;
+    const windowUrl = window.location.href;
+    const infiniteScrollCheck = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.offsetHeight;
+
 
     // To fetch Books 
     useEffect(() => {
-        fetchBooks();  
+        fetchBooks();
     }, [page, categorySelected]);
 
     // To set the category selected as the category we see in the URL so that the respective books are displayed upon page load/refresh
     useEffect(() => {
         categories.map((category) => {
-            if(windowUrl.includes(category.title)) {
+            if (windowUrl.includes(category.title)) {
                 setCategorySelected(category.title);
             }
         })
@@ -51,11 +54,8 @@ export const BooksProvider = ({ children }) => {
 
     // To achieve infinite scroll
     useEffect(() => {
-        // TODO - Fix the submit search infinite scroll issue
-        if (submitSearch === false) {
-            window.addEventListener("scroll", handleScroll);
-            setIsLoading(true);
-        }
+        // TODO - Fix the submit search infinite scroll issue       
+        window.addEventListener("scroll", handleScroll);
     }, []);
 
     // To display list of books
@@ -65,7 +65,7 @@ export const BooksProvider = ({ children }) => {
         });
         setFilteredBookList(NewFilteredBookList);
     }, [bookList]);
-    
+
     const fetchBooks = async () => {
         try {
             if (categorySelected !== '') {
@@ -73,11 +73,9 @@ export const BooksProvider = ({ children }) => {
                 const response = await fetchUrl.json();
                 const bookResults = await response.results;
 
-                locallyStoreFirstPageAPIResults(bookResults);
-
                 setBookList((oldBooksList) => {
                     if (page === 1 && bookResults !== []) {
-                        return getLocallyStoredFirstPageAPIResults()
+                        return bookResults
                     } else {
                         return [...oldBooksList, ...bookResults]
                     }
@@ -93,21 +91,13 @@ export const BooksProvider = ({ children }) => {
     const fetchingBooksFromAPIBasedOnSearch = async () => {
         const fetchUrl = await fetch(`${mainUrl}${urlSearchParams}`);
         const response = await fetchUrl.json();
-        const bookSearchresults = await response.results;
+        let bookSearchresults = await response.results;
+        bookSearchresults = bookSearchresults.slice(0, 8);
         setBookList(bookSearchresults);
     }
 
-    const locallyStoreFirstPageAPIResults = (bookResults) => {
-        window.localStorage.setItem(`bookResultsLocalStore${categorySelected}`, JSON.stringify(bookResults));
-    }
-
-    const getLocallyStoredFirstPageAPIResults = () => {
-        const getLocalStoredAPIData = JSON.parse(window.localStorage.getItem(`bookResultsLocalStore${categorySelected}`)) || [];
-        return getLocalStoredAPIData;
-    }
-
     const handleScroll = () => {
-        if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.offsetHeight) {
+        if (infiniteScrollCheck) {
             setPage(page + 1);
         }
     };
@@ -121,13 +111,11 @@ export const BooksProvider = ({ children }) => {
     const onInputChange = (event) => {
         const searchFieldString = event.target.value.replace(' ', '%20');
         setSearchField(searchFieldString);
-        setSubmitSearch(true);
     }
 
     const onSearchSubmit = (event) => {
         event.preventDefault();
         fetchingBooksFromAPIBasedOnSearch();
-        setSubmitSearch(true);
     };
 
     const value = {
