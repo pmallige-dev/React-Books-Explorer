@@ -8,7 +8,7 @@ const Home = () => {
             <div className="ui inverted vertical masthead center aligned segment">
                 <div className="ui text container">
                     <h1>Books Explorer</h1>
-                    <h2>Find the Book You Want to Read</h2>
+                    <h3>Find the Book You Want to Read</h3>
                 </div>
 
             </div>
