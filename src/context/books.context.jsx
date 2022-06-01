@@ -91,8 +91,12 @@ export const BooksProvider = ({ children }) => {
         const fetchUrl = await fetch(`${mainUrl}${urlSearchParams}`);
         const response = await fetchUrl.json();
         let bookSearchresults = await response.results;
-        bookSearchresults = bookSearchresults.slice(0, 8);
-        setBookList(bookSearchresults);
+        if (bookSearchresults.length > 8) {
+            bookSearchresults = bookSearchresults.slice(0, 8);
+            setBookList(bookSearchresults);
+        } else {
+            setBookList(bookSearchresults);
+        }
     }
 
     const handleScroll = () => {
