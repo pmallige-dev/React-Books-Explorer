@@ -9,7 +9,7 @@ const Genre = () => {
     const { isLoading } = useContext(BooksContext)
 
     return (
-        <div className="genre-container">
+        <div className="genre-container ui inverted vertical masthead center aligned segment">
             <SearchBox />
             <BooksList />
             {isLoading && <Spinner />}

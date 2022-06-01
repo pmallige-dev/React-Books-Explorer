@@ -27,7 +27,6 @@ export const BooksProvider = ({ children }) => {
     const [bookList, setBookList] = useState(initialState.bookList);
     const [filteredBookList, setFilteredBookList] = useState(initialState.bookList);
     const [categorySelected, setCategorySelected] = useState(initialState.categorySelected);
-    const [submitMaadu, setSubmitMaadu] = useState(initialState.submitMaadu);
 
     const mainUrl = `https://gutendex.com/books`;
     const urlSearchParams = `?search=${searchField}&topic=${categorySelected}`;
