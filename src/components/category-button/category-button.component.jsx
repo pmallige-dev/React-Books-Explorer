@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Fragment, useContext } from "react";
+import { Card, CardContent, Typography, CardActions, Button } from "@mui/material";
 import { BooksContext } from "../../context/books.context";
 
 const CategoryButton = ({ category }) => {
@@ -11,21 +12,19 @@ const CategoryButton = ({ category }) => {
     const categoryHandler = () => onCategorySelected(title);
 
     return (
-        <Fragment>
-            <div className="card">
-                <div className="content">
-                    <div className="header">{title}</div>
-                    <div className="description">{description}</div>
-                </div>
-                <div className="ui bottom attached button" onClick={() => { navigationHandler(); categoryHandler(); }}>
+        <Card variant="outlined">
+            <CardContent>
+                <Typography variant="h5" component="div" align="center">
                     {title}
-                    <br />
-                </div>
-
-            </div>
-
-        </Fragment>
-
+                </Typography>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
+                    {description}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button size="small" onClick={() => { navigationHandler(); categoryHandler(); }}>See Book List</Button>
+            </CardActions>
+        </Card>
     )
 }
 

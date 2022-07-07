@@ -18,7 +18,7 @@ export const BooksProvider = ({ children }) => {
         bookList: [],
         filteredBookList: [],
         categorySelected: '',
-        submitMaadu: false,
+        isSearchSubmit: false,
     }
 
     const [page, setPage] = useState(initialState.page);
@@ -27,6 +27,7 @@ export const BooksProvider = ({ children }) => {
     const [bookList, setBookList] = useState(initialState.bookList);
     const [filteredBookList, setFilteredBookList] = useState(initialState.bookList);
     const [categorySelected, setCategorySelected] = useState(initialState.categorySelected);
+    const [isSearchSubmit, setIsSearchSubmit] = useState(initialState.isSearchSubmit);
 
     const mainUrl = `https://gutendex.com/books`;
     const urlSearchParams = `?search=${searchField}&topic=${categorySelected}`;
@@ -39,6 +40,7 @@ export const BooksProvider = ({ children }) => {
 
     // To fetch Books 
     useEffect(() => {
+        setIsLoading(true)
         fetchBooks();
     }, [page, categorySelected]);
 
@@ -51,11 +53,11 @@ export const BooksProvider = ({ children }) => {
         })
     }, []);
 
-    // To achieve infinite scroll
-    useEffect(() => {
-        // TODO - Fix the submit search infinite scroll issue       
-        window.addEventListener("scroll", handleScroll);
-    }, []);
+    // // To achieve infinite scroll
+    // useEffect(() => {
+    //     // TODO - Fix the submit search infinite scroll issue       
+    //     window.addEventListener("scroll", handleScroll);
+    // }, []);
 
     // To display list of books
     useEffect(() => {
@@ -82,6 +84,7 @@ export const BooksProvider = ({ children }) => {
             } else {
                 return
             }
+            setIsLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -91,12 +94,13 @@ export const BooksProvider = ({ children }) => {
         const fetchUrl = await fetch(`${mainUrl}${urlSearchParams}`);
         const response = await fetchUrl.json();
         let bookSearchresults = await response.results;
-        if (bookSearchresults.length > 8) {
-            bookSearchresults = bookSearchresults.slice(0, 8);
+        // if (bookSearchresults.length > 8) {
+        //     bookSearchresults = bookSearchresults.slice(0, 8);
+        //     setBookList(bookSearchresults);
+        // } else {
             setBookList(bookSearchresults);
-        } else {
-            setBookList(bookSearchresults);
-        }
+        // }
+        setIsLoading(false);
     }
 
     const handleScroll = () => {
@@ -118,8 +122,14 @@ export const BooksProvider = ({ children }) => {
 
     const onSearchSubmit = (event) => {
         event.preventDefault();
+        setIsLoading(true);
+        setIsSearchSubmit(true);
         fetchingBooksFromAPIBasedOnSearch();
     };
+
+    const onSearchBookListCompLoad = () => {
+        setIsSearchSubmit(false);
+    }
 
     const value = {
         page,
@@ -129,7 +139,10 @@ export const BooksProvider = ({ children }) => {
         onCategorySelected,
         onInputChange,
         onSearchSubmit,
-        isLoading
+        onSearchBookListCompLoad,
+        isLoading,
+        isSearchSubmit,
+        handleScroll
     }
 
     return <BooksContext.Provider value={value}>{children}</BooksContext.Provider>

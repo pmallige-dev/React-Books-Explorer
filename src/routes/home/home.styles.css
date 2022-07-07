@@ -1,4 +1,4 @@
-h2{
+/* h2{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,8 +8,7 @@ h2{
 }
 
 .category-list-container {
-    /* background: rgb(229, 227, 227); */
     display: flex;
     justify-content: center;
     padding-top: 30px;
-}
+} */

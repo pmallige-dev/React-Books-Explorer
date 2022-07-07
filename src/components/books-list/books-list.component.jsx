@@ -1,20 +1,21 @@
 import { useContext } from "react";
 import { BooksContext } from "../../context/books.context";
 import BookComponent from "../book/book.component";
-import './books-list.styles.css'
+import { Grid } from "@mui/material";
 
 const BooksList = () => {
 
     const { filteredBookList } = useContext(BooksContext);
 
     return (
-        <div className="books-list-container ui cards">
-            {filteredBookList.map(book => {
-                return (
+        <Grid container spacing={4}>
+            {filteredBookList.map(book => (
+                <Grid item xs={3} key={book.id}>
                     <BookComponent key={book.id} book={book} />
-                )
-            })}
-        </div>
+                </Grid>
+            )
+            )}
+        </Grid>
     )
 }
 

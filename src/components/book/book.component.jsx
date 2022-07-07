@@ -1,4 +1,4 @@
-import './book.styles.css'
+import { Card, CardContent, Typography, CardActions, Button } from "@mui/material";
 
 const BookComponent = ({ book }) => {
     const { title, id, formats, authors, download_count } = book;
@@ -11,16 +11,33 @@ const BookComponent = ({ book }) => {
     //     window.open(formats["image/html"]);
     // }
 
+
     return (
         <div key={id} className="book-container card">
-            {/* <div className="ui fluid card"> */}
-            <div className="content">
-                <a className="header" href={formats["text/html"]} target="_blank" rel="noreferrer noopener">{title}</a>
-                <div className="meta">{(authors[0] || {}).name}</div>
-                <br />
-                <div className='meta'>Views: {download_count}</div>
-            </div>
-            {/* </div> */}
+            <Card variant="outlined">
+                <CardContent>
+                    <Typography variant="h5" align="center">
+                        {title}
+                    </Typography>
+                    <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
+                        {(authors[0] || {}).name}
+                    </Typography>
+                    <Typography sx={{ fontSize: 14 }} color="text.secondary" align="center" gutterBottom>
+                        Views: {download_count}
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Button
+                        size="small"
+                        component="a"
+                        href={formats["text/html"]}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        Read Book
+                    </Button>
+                </CardActions>
+            </Card>
         </div>
     )
 }

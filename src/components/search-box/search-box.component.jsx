@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { BooksContext } from "../../context/books.context";
-import './search-box.styles.css'
-
+import './search-box.styles.css';
+import { TextField, Container } from "@mui/material";
 
 const SearchBox = () => {
 
@@ -11,17 +11,18 @@ const SearchBox = () => {
     const onChangeHandler = onInputChange;
 
     return (
-        <div className="SearchBox-container" onSubmit={onSubmitHandler}>
-            <form id="submit">
-                <div className="ui icon input">
-                    <input value={searchField} onChange={onChangeHandler} placeholder="Search Books" />
-                </div>
-                <button className="ui button search" type="submit">
-                    Search
-                </button>
+        <Container align='center' style={{paddingBottom: '20px'}}>
+            <form id="submit" onSubmit={onSubmitHandler}>
+                <TextField
+                    id="outlined-basic"
+                    label="Search Books"
+                    variant="outlined"
+                    name="search"
+                    margin="normal"
+                    onChange={onChangeHandler}
+                />
             </form>
-        </div>
-
+        </Container>
     )
 }
 
