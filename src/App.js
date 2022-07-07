@@ -4,10 +4,11 @@ import Genre from './routes/genre/genre.component';
 import { Fragment } from 'react';
 import Header from './components/header/header.component';
 import { CssBaseline, Container } from '@mui/material';
+import Footer from './components/Footer/Footer.component';
 
 const App = () => {
   return (
-    <div>
+    <Fragment>
       <CssBaseline />
       <Header />
       <Container>
@@ -16,7 +17,9 @@ const App = () => {
           <Route path="genre/*" element={<Genre />} />
         </Routes>
       </Container>
-    </div>
+      <CssBaseline />
+      <Footer />
+    </Fragment>
   );
 }
 

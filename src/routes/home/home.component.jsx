@@ -22,7 +22,6 @@ const Home = () => {
                     ))
                 }
             </Masonry>
-            <Footer />
         </Container>
     )
 }
