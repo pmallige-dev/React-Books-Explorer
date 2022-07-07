@@ -112,6 +112,7 @@ export const BooksProvider = ({ children }) => {
     const onCategorySelected = (category) => {
         setBookList(initialState.bookList)
         setPage(initialState.page)
+        setIsLoading(true);
         setCategorySelected(category.replace(' ', '%20'));
     }
 
