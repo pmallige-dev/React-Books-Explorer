@@ -13,7 +13,7 @@ const Home = () => {
                 <Typography variant="h3" align="center" gutterBottom>Books Explorer</Typography>
                 <Typography variant="h5" align="center" gutterBottom>Find the Book You Want to Read from the popular categories below</Typography>
             </Container>
-            <Masonry columns={4} spacing={2}>
+            <Masonry columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={2}>
                 {
                     categories.map((category) => (
                         // <Grid item xs={3} key={category.id}>

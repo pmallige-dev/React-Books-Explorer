@@ -21,7 +21,7 @@ const BookComponent = ({ book }) => {
                         image={formats["image/jpeg"]}
                         alt={title}
                     />
-                    <Typography variant="h5" align="center">
+                    <Typography variant="h5" align="center" style={{paddingTop: '10px'}}>
                         {title}
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">

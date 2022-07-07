@@ -9,7 +9,7 @@ const BooksList = () => {
     const { filteredBookList } = useContext(BooksContext);
 
     return (
-        <Masonry columns={4} spacing={2}>
+        <Masonry columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={2}>
             {filteredBookList.map(book => (
                 // <Grid item xs={3} key={book.id}>
                     <BookComponent key={book.id} book={book} />
