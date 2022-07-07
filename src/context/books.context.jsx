@@ -136,6 +136,7 @@ export const BooksProvider = ({ children }) => {
         searchField,
         bookList,
         filteredBookList,
+        categorySelected,
         onCategorySelected,
         onInputChange,
         onSearchSubmit,

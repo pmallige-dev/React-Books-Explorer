@@ -3,7 +3,7 @@ import SearchBox from "../../components/search-box/search-box.component";
 import BooksList from "../../components/books-list/books-list.component";
 import CategoryBookList from "../../components/category-book-list/categoryBookList.component";
 import CircularProgress from '@mui/material/CircularProgress';
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import Spinner from "../../components/spinner/spinner.component";
 import Footer from "../../components/Footer/Footer.component";
 import { BooksContext } from "../../context/books.context";
@@ -11,11 +11,13 @@ import SearchBookList from "../../components/search-book-list/searchBookList.com
 
 const Genre = () => {
 
-    const { isLoading } = useContext(BooksContext);
-    const { isSearchSubmit } = useContext(BooksContext);
+    const { isLoading, isSearchSubmit, categorySelected } = useContext(BooksContext);
 
     return (
         <div>
+            <Typography variant="h3" align="center">
+                {categorySelected}
+            </Typography>
             <SearchBox />
             {
                 isSearchSubmit ? <SearchBookList /> : <CategoryBookList />
