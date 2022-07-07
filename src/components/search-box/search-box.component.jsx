@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { BooksContext } from "../../context/books.context";
-import './search-box.styles.css';
 import { TextField, Container } from "@mui/material";
 
 const SearchBox = () => {

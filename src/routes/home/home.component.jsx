@@ -3,7 +3,6 @@ import Container from "@mui/material/Container";
 import { Grid, Typography } from "@mui/material";
 import CategoryButton from "../../components/category-button/category-button.component";
 import Footer from "../../components/Footer/Footer.component";
-import './home.styles.css';
 
 const Home = () => {
     return (
