@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { BooksContext } from "../../context/books.context";
-import { TextField, Container } from "@mui/material";
+import { TextField, Container, Typography } from "@mui/material";
 
 const SearchBox = () => {
 
@@ -17,9 +17,12 @@ const SearchBox = () => {
                     label="Search Books"
                     variant="outlined"
                     name="search"
-                    margin="normal"
                     onChange={onChangeHandler}
                 />
+                <br />
+                <Typography variant="caption" gutterBottom>
+                    Press ENTER to Search
+                </Typography>
             </form>
         </Container>
     )

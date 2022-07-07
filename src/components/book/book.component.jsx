@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, CardActions, Button } from "@mui/material";
+import { Card, CardContent, CardMedia, Typography, CardActions, Button } from "@mui/material";
 
 const BookComponent = ({ book }) => {
     const { title, id, formats, authors, download_count } = book;
@@ -13,9 +13,14 @@ const BookComponent = ({ book }) => {
 
 
     return (
-        <div key={id} className="book-container card">
+        <div key={id}>
             <Card variant="outlined">
                 <CardContent>
+                    <CardMedia
+                        component="img"
+                        image={formats["image/jpeg"]}
+                        alt={title}
+                    />
                     <Typography variant="h5" align="center">
                         {title}
                     </Typography>

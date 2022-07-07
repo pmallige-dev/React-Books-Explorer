@@ -10,7 +10,7 @@ const Home = () => {
     return (
         <Container>
             <Container>
-                <Typography variant="h3" align="center">Books Explorer</Typography>
+                <Typography variant="h3" align="center" gutterBottom>Books Explorer</Typography>
                 <Typography variant="h5" align="center" gutterBottom>Find the Book You Want to Read from the popular categories below</Typography>
             </Container>
             <Masonry columns={4} spacing={2}>

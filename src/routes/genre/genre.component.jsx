@@ -15,7 +15,7 @@ const Genre = () => {
 
     return (
         <div>
-            <Typography variant="h3" align="center">
+            <Typography variant="h3" align="center" gutterBottom>
                 {categorySelected}
             </Typography>
             <SearchBox />
