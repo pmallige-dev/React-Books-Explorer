@@ -11,21 +11,21 @@ export const categories = [
         "title": "Crime",
         "description": "Experience some of the greusome and thrilling crime books of all times",
         "route": "genre/Crime", 
-        "image": "https://cdn-icons.flaticon.com/png/512/924/premium/924912.png?token=exp=1657197904~hmac=a8da28118881268d34506e0545997f43"
+        "image": "https://cdn-icons-png.flaticon.com/512/2322/2322972.png"
     },
     {
         "id": 3,
         "title": "Children",
         "description": "Relive your childhood by reading the most popular children books of all times like Alice in Wonderland, Peter Pan and many more",
         "route": "genre/Children", 
-        "image": "https://cdn-icons.flaticon.com/png/512/547/premium/547464.png?token=exp=1657198031~hmac=825047dd14c4f15f98609b2135b4fb46"
+        "image": "https://cdn-icons-png.flaticon.com/512/1761/1761552.png"
     },
     {
         "id": 4,
         "title": "Education",
         "description": "Learn how to teach and teach how to learn",
         "route": "genre/Education", 
-        "image": "https://cdn-icons.flaticon.com/png/512/3976/premium/3976625.png?token=exp=1657197951~hmac=8308df0900e731f3e1850a0932709ac0"
+        "image": "https://cdn-icons-png.flaticon.com/512/991/991885.png"
     },
     // {
     //     "id": 6,
@@ -38,14 +38,14 @@ export const categories = [
         "title": "History",
         "description": "Explore history from great empires such as Rome to great queens such as Victoria",
         "route": "genre/History", 
-        "image": "https://cdn-icons.flaticon.com/png/512/2682/premium/2682065.png?token=exp=1657197478~hmac=ff2616bb520fdf8665cccfbdc8bf0563"
+        "image": "https://cdn-icons-png.flaticon.com/512/7416/7416941.png"
     },
     {
         "id": 10,
         "title": "Religion",
         "description": "Immerse yourself into works of theology and religion both from the west and the orient",
         "route": "genre/Religion", 
-        "image": "https://cdn-icons.flaticon.com/png/512/2131/premium/2131834.png?token=exp=1657197571~hmac=fd76ea197ec900265ab50bb5e6047010"
+        "image": "https://cdn-icons-png.flaticon.com/512/3542/3542596.png"
     },
     {
         "id": 11,
