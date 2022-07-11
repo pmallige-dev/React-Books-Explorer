@@ -3,7 +3,6 @@ import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
 import { Masonry } from "@mui/lab";
 import CircularProgress from '@mui/material/CircularProgress';
-
 import CategoryButton from "../../components/category-button/category-button.component";
 import SearchBox from "../../components/search-box/search-box.component";
 import SearchBookList from "../../components/search-book-list/searchBookList.component";
@@ -11,7 +10,6 @@ import { Fragment } from "react";
 import { useContext } from "react";
 import { BooksContext } from "../../context/books.context";
 import ButtonComponent from "../../components/button/button.component";
-import { useState } from "react";
 
 const Home = () => {
 

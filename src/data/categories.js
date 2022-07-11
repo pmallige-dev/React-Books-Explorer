@@ -27,48 +27,36 @@ export const categories = [
         "route": "genre/Education", 
         "image": "https://cdn-icons-png.flaticon.com/512/991/991885.png"
     },
-    // {
-    //     "id": 6,
-    //     "title": "General works",
-    //     "description": "Explore works of great classical writers such as William Shakespeare, Jane Austen, Mark Twain and many more",
-    //     "route": "genre/GeneralWorks", 
-    // },
     {
-        "id": 7,
+        "id": 5,
         "title": "History",
         "description": "Explore history from great empires such as Rome to great queens such as Victoria",
         "route": "genre/History", 
         "image": "https://cdn-icons-png.flaticon.com/512/7416/7416941.png"
     },
     {
-        "id": 10,
+        "id": 6,
         "title": "Religion",
         "description": "Immerse yourself into works of theology and religion both from the west and the orient",
         "route": "genre/Religion", 
         "image": "https://cdn-icons-png.flaticon.com/512/3542/3542596.png"
     },
     {
-        "id": 11,
+        "id": 7,
         "title": "Science",
         "description": "Deep dive into the ever expanding universe of science",
         "route": "genre/Science", 
         "image": "https://cdn-icons-png.flaticon.com/512/3081/3081478.png"
     },
-    // {
-    //     "id": 12,
-    //     "title": "Social Sciences",
-    //     "description": "Learn what drives todays societies and the science behind it.",
-    //     "route": "genre/SocialSciences", 
-    // },
     {
-        "id": 13,
+        "id": 8,
         "title": "Technology",
         "description": "Find every work related to technology here in just one spot",
         "route": "genre/Technology",
         "image": "https://cdn-icons-png.flaticon.com/512/780/780528.png" 
     },
     {
-        "id": 14,
+        "id": 9,
         "title": "Wars",
         "description": "Explore humanity's greatest conquest and campaigns such as the Great Wars to the conquest of Alexander",
         "route": "genre/Wars", 

@@ -1,21 +1,16 @@
 import { useContext, useEffect } from "react";
-import BooksList from "../books-list/books-list.component";
 import BookComponent from "../book/book.component";
 import { BooksContext } from "../../context/books.context";
 import Masonry from "@mui/lab/Masonry";
 
-const SearchBookList = ({ homePageSearch }) => {
+const SearchBookList = () => {
 
-    const { searchFilteredBookList, onSearchBookListCompLoad, handleScroll } = useContext(BooksContext);
+    const { searchFilteredBookList, handleScroll } = useContext(BooksContext);
 
-    const searchBooklistCompLoadHandler = onSearchBookListCompLoad;
     const windowScrollhandler = handleScroll;
 
     useEffect(() => {
         window.removeEventListener("scroll", windowScrollhandler);
-        console.log('Search Booklist useEffect triggered');
-        // if(!homePageSearch)
-        //     searchBooklistCompLoadHandler()
     }, [])
 
     return (

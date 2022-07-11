@@ -5,15 +5,9 @@ import { Masonry } from "@mui/lab";
 
 const BooksList = () => {
 
-    const { isSearchSubmit, categoryFilteredBookList, handleScroll, page } = useContext(BooksContext);
+    const { categoryFilteredBookList, handleScroll } = useContext(BooksContext);
 
     const windowScrollhandler = handleScroll;
-
-    // if (!isSearchSubmit) {
-    //     window.addEventListener("scroll", windowScrollhandler);
-    // } else {
-    //     window.removeEventListener("scroll", windowScrollhandler);
-    // }
 
     useEffect(() => {
         window.addEventListener("scroll", windowScrollhandler);

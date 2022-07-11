@@ -7,6 +7,9 @@ export const BooksContext = createContext({
     searchField: '',
     bookList: [],
     filteredBookList: [],
+    categorySelected: '',
+    isSearchSubmit: false,
+    searchBtnClose: false
 })
 
 export const BooksProvider = ({ children }) => {
@@ -121,7 +124,6 @@ export const BooksProvider = ({ children }) => {
         setCategoryBookList(initialState.bookList)
         setPage(initialState.page)
         setIsLoading(initialState.isLoading);
-        // window.addEventListener("scroll", handleScroll);
         setCategorySelected(category.replace(' ', '%20'));
     }
 
@@ -143,9 +145,7 @@ export const BooksProvider = ({ children }) => {
         setIsLoading(true);
         setIsSearchSubmit(true);
         setSearchBtnClose(initialState.searchBtnClose);
-        // setBookList([]);
         setPage(initialState.page);
-        // window.removeEventListener("scroll", handleScroll);
         fetchingBooksFromAPIBasedOnSearchAndCategory();
     };
 
@@ -161,7 +161,6 @@ export const BooksProvider = ({ children }) => {
     const resetSearchWithCategorySelected = () => {
         setCategoryBookList(initialState.bookList);
         setPage(initialState.page);
-        // window.addEventListener("scroll", handleScroll);
         fetchBooks();
     }
 

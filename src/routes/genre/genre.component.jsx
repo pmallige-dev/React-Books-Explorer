@@ -6,7 +6,6 @@ import { BooksContext } from "../../context/books.context";
 import BooksList from "../../components/books-list/books-list.component";
 import SearchBookList from "../../components/search-book-list/searchBookList.component";
 import ButtonComponent from "../../components/button/button.component";
-import CategoryBookList from "../../components/category-book-list/categoryBookList.component"
 
 const Genre = () => {
 
@@ -23,9 +22,6 @@ const Genre = () => {
                 {categorySelected}
             </Typography>
             <SearchBox />
-            {/* {
-                isSearchSubmit ? <SearchBookList /> : <CategoryBookList />
-            } */}
             {
                 isSearchSubmit ? (
                     isLoading ?
@@ -35,7 +31,7 @@ const Genre = () => {
                         (<Fragment>
                             {
                                 searchBtnClose ?
-                                    (<Fragment />) :
+                                    <Fragment /> :
                                     (
                                         <Fragment>
                                             <ButtonComponent
@@ -62,7 +58,6 @@ const Genre = () => {
                             {isLoading && <CircularProgress />}
                         </Container>
                     </Fragment>
-                // <Fragment />
             }
 
         </div>

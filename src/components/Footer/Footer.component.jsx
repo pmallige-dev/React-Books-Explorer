@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Box, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Typography, Container } from "@mui/material";
+import { Box, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Typography, Container } from "@mui/material";
 import { useState } from "react";
 
 const Footer = () => {
