@@ -5,6 +5,7 @@ import { Fragment } from 'react';
 import Header from './components/header/header.component';
 import { CssBaseline, Container } from '@mui/material';
 import Footer from './components/Footer/Footer.component';
+import OpenBook from './routes/openBook/OpenBook.component';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="genre/*" element={<Genre />} />
+          {/* <Route path="openBook" element={<OpenBook />} /> */}
         </Routes>
       </Container>
       <CssBaseline />

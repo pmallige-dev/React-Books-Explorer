@@ -1,7 +1,22 @@
-import { Card, CardContent, CardMedia, Typography, CardActions, Button } from "@mui/material";
+import { Card, CardContent, CardMedia, Typography, CardActions, Button, Container } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import BookAlertDialogBox from "../bookAlertDialogBox/bookAlertDialogBox.component";
+
 
 const BookComponent = ({ book }) => {
     const { title, id, formats, authors, download_count } = book;
+
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
 
     return (
         <div key={id}>
@@ -12,7 +27,7 @@ const BookComponent = ({ book }) => {
                         image={formats["image/jpeg"]}
                         alt={title}
                     />
-                    <Typography variant="h5" align="center" style={{paddingTop: '10px'}}>
+                    <Typography variant="h5" align="center" style={{ paddingTop: '10px' }}>
                         {title}
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
@@ -23,7 +38,18 @@ const BookComponent = ({ book }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button
+                    <Container align="center">
+                        <Button variant="outlined" onClick={handleClickOpen}>
+                            Available Formats
+                        </Button>
+                    </Container>
+                    <BookAlertDialogBox open={open} handleClose={handleClose} formats={formats}/>
+                    {/* <Button size="small">
+                        <NavLink to="/openBook" state={book}>
+                            Read Book
+                        </NavLink>
+                    </Button> */}
+                    {/* <Button
                         size="small"
                         component="a"
                         href={formats["text/html"]}
@@ -31,7 +57,7 @@ const BookComponent = ({ book }) => {
                         rel="noreferrer noopener"
                     >
                         Read Book
-                    </Button>
+                    </Button> */}
                 </CardActions>
             </Card>
         </div>
