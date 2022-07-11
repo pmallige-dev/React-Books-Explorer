@@ -9,7 +9,7 @@ const CategoryBookList = () => {
     const windowScrollhandler = handleScroll;
 
     useEffect(() => {
-        // TODO - Fix the submit search infinite scroll issue       
+        // TODO - Check/fix the infinite scroll function where the 3rd page is not loaded upon infinite scroll       
         window.addEventListener("scroll", windowScrollhandler);
 
         return () => {
