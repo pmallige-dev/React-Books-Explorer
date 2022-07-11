@@ -3,15 +3,6 @@ import { Card, CardContent, CardMedia, Typography, CardActions, Button } from "@
 const BookComponent = ({ book }) => {
     const { title, id, formats, authors, download_count } = book;
 
-    // href={formats["image/html"]}
-
-    // const clickHandler = newWindowLink();
-
-    // const newWindowLink = () => {
-    //     window.open(formats["image/html"]);
-    // }
-
-
     return (
         <div key={id}>
             <Card variant="outlined">

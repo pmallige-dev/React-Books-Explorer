@@ -19,29 +19,31 @@ export const BooksProvider = ({ children }) => {
         filteredBookList: [],
         categorySelected: '',
         isSearchSubmit: false,
+        searchBtnClose: false
     }
 
     const [page, setPage] = useState(initialState.page);
     const [isLoading, setIsLoading] = useState(initialState.isLoading);
     const [searchField, setSearchField] = useState(initialState.searchField);
-    const [bookList, setBookList] = useState(initialState.bookList);
-    const [filteredBookList, setFilteredBookList] = useState(initialState.bookList);
+    const [categoryBookList, setCategoryBookList] = useState(initialState.bookList);
+    const [searchBookList, setSearchBookList] = useState(initialState.bookList);
+    const [categoryFilteredBookList, setCategoryFilteredBookList] = useState(initialState.bookList);
+    const [searchFilteredBookList, setSearchFilteredBookList] = useState(initialState.bookList);
     const [categorySelected, setCategorySelected] = useState(initialState.categorySelected);
     const [isSearchSubmit, setIsSearchSubmit] = useState(initialState.isSearchSubmit);
+    const [searchBtnClose, setSearchBtnClose] = useState(initialState.searchBtnClose);
 
     const mainUrl = `https://gutendex.com/books`;
-    const urlSearchParams = `?search=${searchField}&topic=${categorySelected}`;
+    const urlSearchParams = `?search=${searchField}`;
+    const urlSearchParamsForCategory = `?search=${searchField}&topic=${categorySelected}`;
     const urlCategoryParams = `/?page=${page}&topic=${categorySelected}`;
-
-    // let submitSearch = false;
     const windowUrl = window.location.href;
-    const infiniteScrollCheck = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.offsetHeight;
-
 
     // To fetch Books 
     useEffect(() => {
-        setIsLoading(true)
+        setIsLoading(initialState.isLoading);
         fetchBooks();
+        console.log(`Page number at Fetch Books useEffect is ${page}`);
     }, [page, categorySelected]);
 
     // To set the category selected as the category we see in the URL so that the respective books are displayed upon page load/refresh
@@ -53,19 +55,21 @@ export const BooksProvider = ({ children }) => {
         })
     }, []);
 
-    // // To achieve infinite scroll
-    // useEffect(() => {
-    //     // TODO - Fix the submit search infinite scroll issue       
-    //     window.addEventListener("scroll", handleScroll);
-    // }, []);
-
-    // To display list of books
+    // To display list of books based on Category Selected
     useEffect(() => {
-        const NewFilteredBookList = bookList.filter((book) => {
+        const NewFilteredBookList = categoryBookList.filter((book) => {
             return book.title.toLocaleLowerCase();
         });
-        setFilteredBookList(NewFilteredBookList);
-    }, [bookList]);
+        setCategoryFilteredBookList(NewFilteredBookList);
+    }, [categoryBookList]);
+
+    // To display list of books based on Search
+    useEffect(() => {
+        const NewFilteredBookList = searchBookList.filter((book) => {
+            return book.title.toLocaleLowerCase();
+        });
+        setSearchFilteredBookList(NewFilteredBookList);
+    }, [searchBookList]);
 
     const fetchBooks = async () => {
         try {
@@ -74,7 +78,7 @@ export const BooksProvider = ({ children }) => {
                 const response = await fetchUrl.json();
                 const bookResults = await response.results;
 
-                setBookList((oldBooksList) => {
+                setCategoryBookList((oldBooksList) => {
                     if (page === 1 && bookResults !== []) {
                         return bookResults
                     } else {
@@ -94,25 +98,30 @@ export const BooksProvider = ({ children }) => {
         const fetchUrl = await fetch(`${mainUrl}${urlSearchParams}`);
         const response = await fetchUrl.json();
         let bookSearchresults = await response.results;
-        // if (bookSearchresults.length > 8) {
-        //     bookSearchresults = bookSearchresults.slice(0, 8);
-        //     setBookList(bookSearchresults);
-        // } else {
-            setBookList(bookSearchresults);
-        // }
+        setSearchBookList(bookSearchresults);
+        setIsLoading(false);
+    }
+
+    const fetchingBooksFromAPIBasedOnSearchAndCategory = async () => {
+        const fetchUrl = await fetch(`${mainUrl}${urlSearchParamsForCategory}`);
+        const response = await fetchUrl.json();
+        let bookSearchresults = await response.results;
+        setSearchBookList(bookSearchresults);
         setIsLoading(false);
     }
 
     const handleScroll = () => {
-        if (infiniteScrollCheck) {
+        if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.offsetHeight) {
             setPage(page + 1);
+            console.log(`HandleScroll is triggered and page is ${page}`);
         }
     };
 
     const onCategorySelected = (category) => {
-        setBookList(initialState.bookList)
+        setCategoryBookList(initialState.bookList)
         setPage(initialState.page)
-        setIsLoading(true);
+        setIsLoading(initialState.isLoading);
+        // window.addEventListener("scroll", handleScroll);
         setCategorySelected(category.replace(' ', '%20'));
     }
 
@@ -123,28 +132,59 @@ export const BooksProvider = ({ children }) => {
 
     const onSearchSubmit = (event) => {
         event.preventDefault();
-        setIsLoading(true);
+        setIsLoading(initialState.isLoading);
         setIsSearchSubmit(true);
+        setSearchBtnClose(initialState.searchBtnClose);
         fetchingBooksFromAPIBasedOnSearch();
     };
 
+    const onGenreSearchSubmit = (event) => {
+        event.preventDefault();
+        setIsLoading(true);
+        setIsSearchSubmit(true);
+        setSearchBtnClose(initialState.searchBtnClose);
+        // setBookList([]);
+        setPage(initialState.page);
+        // window.removeEventListener("scroll", handleScroll);
+        fetchingBooksFromAPIBasedOnSearchAndCategory();
+    };
+
     const onSearchBookListCompLoad = () => {
-        setIsSearchSubmit(false);
+        setIsSearchSubmit(initialState.isSearchSubmit);
+    }
+
+    const onSearchBtnCloseClick = () => {
+        setSearchBtnClose(true);
+        setIsSearchSubmit(initialState.isSearchSubmit);
+    }
+
+    const resetSearchWithCategorySelected = () => {
+        setCategoryBookList(initialState.bookList);
+        setPage(initialState.page);
+        // window.addEventListener("scroll", handleScroll);
+        fetchBooks();
     }
 
     const value = {
         page,
         searchField,
-        bookList,
-        filteredBookList,
+        categoryBookList,
+        searchBookList,
+        categoryFilteredBookList,
+        searchFilteredBookList,
         categorySelected,
         onCategorySelected,
         onInputChange,
         onSearchSubmit,
+        onGenreSearchSubmit,
         onSearchBookListCompLoad,
         isLoading,
         isSearchSubmit,
-        handleScroll
+        setIsSearchSubmit,
+        handleScroll,
+        searchBtnClose,
+        onSearchBtnCloseClick,
+        resetSearchWithCategorySelected
     }
 
     return <BooksContext.Provider value={value}>{children}</BooksContext.Provider>

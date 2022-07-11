@@ -2,12 +2,18 @@ import { useContext } from "react";
 import { BooksContext } from "../../context/books.context";
 import { TextField, Container, Typography } from "@mui/material";
 
-const SearchBox = () => {
+const SearchBox = ({ homePageSearch }) => {
 
-    const { onSearchSubmit, onInputChange, searchField } = useContext(BooksContext);
+    const { onSearchSubmit, onGenreSearchSubmit, onInputChange } = useContext(BooksContext);
 
-    const onSubmitHandler = onSearchSubmit;
+    let onSubmitHandler;
     const onChangeHandler = onInputChange;
+
+    if (homePageSearch) {
+        onSubmitHandler = onSearchSubmit;
+    } else {
+        onSubmitHandler = onGenreSearchSubmit;
+    }
 
     return (
         <Container align='center' style={{paddingBottom: '20px'}}>

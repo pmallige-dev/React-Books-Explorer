@@ -1,21 +1,33 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { BooksContext } from "../../context/books.context";
 import BookComponent from "../book/book.component";
-import { Grid } from "@mui/material";
 import { Masonry } from "@mui/lab";
 
 const BooksList = () => {
 
-    const { filteredBookList } = useContext(BooksContext);
+    const { isSearchSubmit, categoryFilteredBookList, handleScroll, page } = useContext(BooksContext);
+
+    const windowScrollhandler = handleScroll;
+
+    // if (!isSearchSubmit) {
+    //     window.addEventListener("scroll", windowScrollhandler);
+    // } else {
+    //     window.removeEventListener("scroll", windowScrollhandler);
+    // }
+
+    useEffect(() => {
+        window.addEventListener("scroll", windowScrollhandler);
+
+        return () => {
+            window.removeEventListener("scroll", windowScrollhandler);
+        }
+    }, []);
 
     return (
         <Masonry columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={2}>
-            {filteredBookList.map(book => (
-                // <Grid item xs={3} key={book.id}>
-                    <BookComponent key={book.id} book={book} />
-                // </Grid>
-            )
-            )}
+            {categoryFilteredBookList.map(book => (
+                <BookComponent key={book.id} book={book} />
+            ))}
         </Masonry>
     )
 }
