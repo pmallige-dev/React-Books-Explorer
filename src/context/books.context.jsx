@@ -46,7 +46,6 @@ export const BooksProvider = ({ children }) => {
     useEffect(() => {
         setIsLoading(initialState.isLoading);
         fetchBooks();
-        console.log(`Page number at Fetch Books useEffect is ${page}`);
     }, [page, categorySelected]);
 
     // To set the category selected as the category we see in the URL so that the respective books are displayed upon page load/refresh
@@ -116,7 +115,6 @@ export const BooksProvider = ({ children }) => {
     const handleScroll = () => {
         if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.offsetHeight) {
             setPage(page + 1);
-            console.log(`HandleScroll is triggered and page is ${page}`);
         }
     };
 

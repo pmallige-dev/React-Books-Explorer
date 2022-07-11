@@ -104,6 +104,31 @@ const Footer = () => {
                                         Book icons created by Smashicons - Flaticon
                                     </a>
                                     <br />
+                                    <a
+                                        href="https://www.flaticon.com/free-icons/geography" 
+                                        title="Geography icons"
+                                        target="_blank"
+                                        rel="noreferrer noopener"
+                                    >
+                                        Geography icons created by Freepik - Flaticon
+                                    </a>
+                                    <br />
+                                    <a
+                                        href="https://www.flaticon.com/free-icons/law" title="law icons"
+                                        target="_blank"
+                                        rel="noreferrer noopener"
+                                    >
+                                        Law icons created by Freepik - Flaticon
+                                    </a>
+                                    <br />
+                                    <a
+                                        href="https://www.flaticon.com/free-icons/music" title="book icons"
+                                        target="_blank"
+                                        rel="noreferrer noopener"
+                                    >
+                                        Music icons created by Freepik - Flaticon
+                                    </a>
+                                    <br />
                                 </DialogContentText>
                             </DialogContent>
                             <DialogActions>
