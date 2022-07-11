@@ -30,7 +30,7 @@ export const categories = [
     {
         "id": 5,
         "title": "Geography",
-        "description": "Learn how to teach and teach how to learn",
+        "description": "Travel the world via the Books",
         "route": "genre/Geography", 
         "image": "https://cdn-icons-png.flaticon.com/512/921/921448.png"
     },
