@@ -7,8 +7,8 @@ import BooksList from "../../components/books-list/books-list.component";
 import SearchBookList from "../../components/search-book-list/searchBookList.component";
 import ButtonComponent from "../../components/button/button.component";
 import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
+import SearchNotFound from "../../components/searchNotFound/SearchNotFound.component";
 import { useEffect } from "react";
-
 
 const Genre = () => {
 
@@ -21,8 +21,9 @@ const Genre = () => {
         searchBtnClose,
         onSearchBtnCloseClick,
         resetSearchWithCategorySelected,
-        genrePageLoad, 
-        setGenrePageLoad
+        genrePageLoad,
+        setGenrePageLoad,
+        searchStringNotFound
     } = useContext(BooksContext);
 
     useEffect(() => {
@@ -59,7 +60,11 @@ const Genre = () => {
                             align="center"
                             style={{ paddingBottom: '20px' }}
                         />
-                        <SearchBookList />
+                        {
+                            searchStringNotFound ?
+                                <SearchNotFound /> :
+                                <SearchBookList />
+                        }
                         <ButtonComponent
                             btnName="Close Search Results"
                             onClick={btnOnClickHandler}

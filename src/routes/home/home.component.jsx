@@ -11,12 +11,15 @@ import { useContext } from "react";
 import { BooksContext } from "../../context/books.context";
 import ButtonComponent from "../../components/button/button.component";
 import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
+import SearchNotFound from "../../components/searchNotFound/SearchNotFound.component";
 
 const Home = () => {
 
-    const { isSearchSubmit, homePageSearchSubmit, isLoading, isFullPageLoading, searchBtnClose, onSearchBtnCloseClick } = useContext(BooksContext);
+    const { isSearchSubmit, homePageSearchSubmit, isLoading, isFullPageLoading, searchStringNotFound, searchBtnClose, onSearchBtnCloseClick } = useContext(BooksContext);
 
     const btnOnClickHandler = onSearchBtnCloseClick;
+
+    console.log(searchStringNotFound);
 
     return (
         <Container>
@@ -35,7 +38,11 @@ const Home = () => {
                                 align="center"
                                 style={{ paddingBottom: '20px' }}
                             />
-                            <SearchBookList homePageSearch={true} />
+                            {
+                                searchStringNotFound ?
+                                    <SearchNotFound /> :
+                                    <SearchBookList homePageSearch={true} />
+                            }
                             <ButtonComponent
                                 btnName="Close Search Results"
                                 onClick={btnOnClickHandler}

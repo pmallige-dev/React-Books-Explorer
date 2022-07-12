@@ -31,7 +31,8 @@ export const BooksProvider = ({ children }) => {
         genrePageSearchSubmit: false,
         searchBtnClose: false,
         homePageLoad: false,
-        genrePageLoad: false
+        genrePageLoad: false,
+        searchStringNotFound: false,
     }
 
     const [page, setPage] = useState(initialState.page);
@@ -49,6 +50,7 @@ export const BooksProvider = ({ children }) => {
     const [searchBtnClose, setSearchBtnClose] = useState(initialState.searchBtnClose);
     const [homePageLoad, setHomePageLoad] = useState(initialState.homePageLoad);
     const [genrePageLoad, setGenrePageLoad] = useState(initialState.genrePageLoad);
+    const [searchStringNotFound, setSearchStringNotFound] = useState(initialState.searchStringNotFound);
 
     const mainUrl = `https://gutendex.com/books`;
     const urlSearchParams = `?search=${searchField}`;
@@ -115,6 +117,13 @@ export const BooksProvider = ({ children }) => {
         const fetchUrl = await fetch(`${mainUrl}${urlSearchParams}`);
         const response = await fetchUrl.json();
         let bookSearchresults = await response.results;
+        const bookCount = await response.count;
+        console.log(bookCount);
+        if (bookCount === 0) {
+            setSearchStringNotFound(true);
+        } else {
+            setSearchStringNotFound(initialState.searchStringNotFound);
+        }
         setSearchBookList(bookSearchresults);
         setIsFullPageLoading(false);
     }
@@ -123,6 +132,13 @@ export const BooksProvider = ({ children }) => {
         const fetchUrl = await fetch(`${mainUrl}${urlSearchParamsForCategory}`);
         const response = await fetchUrl.json();
         let bookSearchresults = await response.results;
+        const bookCount = await response.count;
+        console.log(bookCount);
+        if (bookCount === 0) {
+            setSearchStringNotFound(true);
+        } else {
+            setSearchStringNotFound(initialState.searchStringNotFound);
+        }
         setSearchBookList(bookSearchresults);
         setIsFullPageLoading(false);
     }
@@ -209,7 +225,8 @@ export const BooksProvider = ({ children }) => {
         homePageLoad, 
         setHomePageLoad,
         genrePageLoad, 
-        setGenrePageLoad
+        setGenrePageLoad,
+        searchStringNotFound
     }
 
     return <BooksContext.Provider value={value}>{children}</BooksContext.Provider>
