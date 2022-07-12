@@ -105,7 +105,7 @@ const Footer = () => {
                                     </a>
                                     <br />
                                     <a
-                                        href="https://www.flaticon.com/free-icons/geography" 
+                                        href="https://www.flaticon.com/free-icons/geography"
                                         title="Geography icons"
                                         target="_blank"
                                         rel="noreferrer noopener"
@@ -140,24 +140,36 @@ const Footer = () => {
                     </div>
                     <div>
                         <Typography style={{ paddingTop: '10px' }} gutterBottom>
-                            This App is created by Prakyath Mallige
+                            The data related to books are obtained from <a href="https://gutendex.com/" title="Gutendex" target="_blank" rel="noreferrer noopener">Gutendex API</a>. Gutendex is a third party API which provides the Open Source and Free Books related data from Project Gutenberg.
+                        </Typography>
+                        <Typography style={{ paddingTop: '10px' }} gutterBottom>
+                            <a href="https://www.gutenberg.org/" title="Gutenberg" target="_blank" rel="noreferrer noopener">Project Gutenberg</a> is an online library of free eBooks.
+                        </Typography>
+                        <Typography gutterBottom>
+                            Project Gutenberg was the first provider of free electronic books, or eBooks. Michael Hart, founder of Project Gutenberg, invented eBooks in 1971 and his memory continues to inspire the creation of eBooks and related content today.
+                        </Typography>
+                        <Typography style={{ paddingTop: '10px' }} gutterBottom>
+                            This App is not intended for commercial purposes. This app is created purely for educational and non-commercial purposes.
+                        </Typography>
+                        <Typography gutterBottom>
+                            This App is created by <strong>Prakyath Mallige</strong>.
                         </Typography>
                         <a
-                            href="https://www.linkedin.com/in/prakyathm/" 
+                            href="https://www.linkedin.com/in/prakyathm/"
                             title="Prakyath's LinkedIn"
                             target="_blank"
                             rel="noreferrer noopener"
                         >
                             <img src="https://img.icons8.com/office/35/000000/linkedin.png" />
-                        </a>  
+                        </a>
                         <a
-                            href="https://github.com/pmallige-dev" 
+                            href="https://github.com/pmallige-dev"
                             title="Prakyath's GitHub"
                             target="_blank"
                             rel="noreferrer noopener"
                         >
                             <img src="https://img.icons8.com/ios-filled/35/000000/github.png" />
-                        </a>                                          
+                        </a>
                     </div>
                 </Container>
             </Box>

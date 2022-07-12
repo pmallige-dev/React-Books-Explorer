@@ -110,6 +110,9 @@ export const BooksProvider = ({ children }) => {
             setIsFullPageLoading(false);
         } catch (error) {
             console.log(error);
+            // if (error.contains('TypeError: Failed to fetch')) {
+            //     console.log('Do something');
+            // }
         }
     }
 

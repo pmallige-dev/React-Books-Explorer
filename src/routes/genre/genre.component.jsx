@@ -40,7 +40,7 @@ const Genre = () => {
     }
 
     return (
-        <div>
+        <Container>
             <Typography variant="h3" align="center" gutterBottom>
                 {categorySelected}
             </Typography>
@@ -78,7 +78,7 @@ const Genre = () => {
                 searchBtnClose && isFullPageLoading && <LoadingBackdrop />
             }
             {
-                (!isSearchSubmit || searchBtnClose || genrePageLoad) && (
+                (!isSearchSubmit || (searchBtnClose && genrePageLoad)) && (
                     <Fragment>
                         <BooksList />
                         <Container align="center" style={{ paddingTop: '20px' }}>
@@ -87,7 +87,7 @@ const Genre = () => {
                     </Fragment>
                 )
             }
-        </div>
+        </Container>
     )
 }
 

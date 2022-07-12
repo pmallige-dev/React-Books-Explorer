@@ -22,11 +22,19 @@ const BookComponent = ({ book }) => {
         <div key={id}>
             <Card variant="outlined">
                 <CardContent>
-                    <CardMedia
-                        component="img"
-                        image={formats["image/jpeg"]}
-                        alt={title}
-                    />
+                    {
+                        formats["image/jpeg"] ?
+                            <CardMedia
+                                component="img"
+                                image={formats["image/jpeg"]}
+                                alt={title}
+                            /> :
+                            <CardMedia
+                                component="img"
+                                image="https://cdn-icons-png.flaticon.com/512/2232/2232688.png"
+                                alt={title}
+                            />
+                    }
                     <Typography variant="h5" align="center" style={{ paddingTop: '10px' }}>
                         {title}
                     </Typography>
@@ -43,7 +51,7 @@ const BookComponent = ({ book }) => {
                             Available Formats
                         </Button>
                     </Container>
-                    <BookAlertDialogBox open={open} handleClose={handleClose} formats={formats}/>
+                    <BookAlertDialogBox open={open} handleClose={handleClose} formats={formats} />
                 </CardActions>
             </Card>
         </div>
