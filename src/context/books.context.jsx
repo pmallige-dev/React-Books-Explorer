@@ -27,6 +27,7 @@ export const BooksProvider = ({ children }) => {
 
     const [page, setPage] = useState(initialState.page);
     const [isLoading, setIsLoading] = useState(initialState.isLoading);
+    const [isFullPageLoading, setIsFullPageLoading] = useState(initialState.isLoading);
     const [searchField, setSearchField] = useState(initialState.searchField);
     const [categoryBookList, setCategoryBookList] = useState(initialState.bookList);
     const [searchBookList, setSearchBookList] = useState(initialState.bookList);
@@ -91,6 +92,7 @@ export const BooksProvider = ({ children }) => {
                 return
             }
             setIsLoading(false);
+            setIsFullPageLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -101,7 +103,7 @@ export const BooksProvider = ({ children }) => {
         const response = await fetchUrl.json();
         let bookSearchresults = await response.results;
         setSearchBookList(bookSearchresults);
-        setIsLoading(false);
+        setIsFullPageLoading(false);
     }
 
     const fetchingBooksFromAPIBasedOnSearchAndCategory = async () => {
@@ -109,7 +111,7 @@ export const BooksProvider = ({ children }) => {
         const response = await fetchUrl.json();
         let bookSearchresults = await response.results;
         setSearchBookList(bookSearchresults);
-        setIsLoading(false);
+        setIsFullPageLoading(false);
     }
 
     const handleScroll = () => {
@@ -122,6 +124,7 @@ export const BooksProvider = ({ children }) => {
         setCategoryBookList(initialState.bookList)
         setPage(initialState.page)
         setIsLoading(initialState.isLoading);
+        setIsFullPageLoading(initialState.isLoading);
         setCategorySelected(category.replace(' ', '%20'));
     }
 
@@ -132,7 +135,7 @@ export const BooksProvider = ({ children }) => {
 
     const onSearchSubmit = (event) => {
         event.preventDefault();
-        setIsLoading(initialState.isLoading);
+        setIsFullPageLoading(initialState.isLoading);
         setIsSearchSubmit(true);
         setSearchBtnClose(initialState.searchBtnClose);
         fetchingBooksFromAPIBasedOnSearch();
@@ -140,7 +143,7 @@ export const BooksProvider = ({ children }) => {
 
     const onGenreSearchSubmit = (event) => {
         event.preventDefault();
-        setIsLoading(true);
+        setIsFullPageLoading(true);
         setIsSearchSubmit(true);
         setSearchBtnClose(initialState.searchBtnClose);
         setPage(initialState.page);
@@ -159,6 +162,7 @@ export const BooksProvider = ({ children }) => {
     const resetSearchWithCategorySelected = () => {
         setCategoryBookList(initialState.bookList);
         setPage(initialState.page);
+        setIsFullPageLoading(initialState.isLoading);
         fetchBooks();
     }
 
@@ -176,6 +180,7 @@ export const BooksProvider = ({ children }) => {
         onGenreSearchSubmit,
         onSearchBookListCompLoad,
         isLoading,
+        isFullPageLoading,
         isSearchSubmit,
         setIsSearchSubmit,
         handleScroll,

@@ -10,10 +10,11 @@ import { Fragment } from "react";
 import { useContext } from "react";
 import { BooksContext } from "../../context/books.context";
 import ButtonComponent from "../../components/button/button.component";
+import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
 
 const Home = () => {
 
-    const { isSearchSubmit, isLoading, searchBtnClose, onSearchBtnCloseClick } = useContext(BooksContext);
+    const { isSearchSubmit, isLoading, isFullPageLoading, searchBtnClose, onSearchBtnCloseClick } = useContext(BooksContext);
 
     const btnOnClickHandler = onSearchBtnCloseClick;
 
@@ -23,35 +24,26 @@ const Home = () => {
                 <Typography variant="h3" align="center" gutterBottom>Books Explorer</Typography>
                 <SearchBox homePageSearch={true} />
                 {
-                    isSearchSubmit ? (
-                        isLoading ?
-                            <Container align="center" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-                                <CircularProgress />
-                            </Container> :
-                            (<Fragment>
-                                {
-                                    searchBtnClose ?
-                                        <Fragment /> : (
-                                            <Fragment>
-                                                <ButtonComponent
-                                                    btnName="Close Search Results"
-                                                    onClick={btnOnClickHandler}
-                                                    align="center"
-                                                    style={{ paddingBottom: '20px' }}
-                                                />
-                                                <SearchBookList homePageSearch={true} />
-                                                <ButtonComponent
-                                                    btnName="Close Search Results"
-                                                    onClick={btnOnClickHandler}
-                                                    align="center"
-                                                    style={{ paddingBottom: '20px' }}
-                                                />
-                                            </Fragment>
-                                        )
-                                }
-                            </Fragment>)
-                    ) :
-                        <Fragment />
+                    isSearchSubmit && isFullPageLoading && <LoadingBackdrop />
+                }
+                {
+                    isSearchSubmit && !searchBtnClose && (
+                        <Fragment>
+                            <ButtonComponent
+                                btnName="Close Search Results"
+                                onClick={btnOnClickHandler}
+                                align="center"
+                                style={{ paddingBottom: '20px' }}
+                            />
+                            <SearchBookList homePageSearch={true} />
+                            <ButtonComponent
+                                btnName="Close Search Results"
+                                onClick={btnOnClickHandler}
+                                align="center"
+                                style={{ paddingBottom: '20px' }}
+                            />
+                        </Fragment>
+                    )
                 }
                 <Typography variant="h5" align="center" gutterBottom>Find the Book You Want to Read from the popular categories below</Typography>
             </Container>

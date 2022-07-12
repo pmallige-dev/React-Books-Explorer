@@ -44,20 +44,6 @@ const BookComponent = ({ book }) => {
                         </Button>
                     </Container>
                     <BookAlertDialogBox open={open} handleClose={handleClose} formats={formats}/>
-                    {/* <Button size="small">
-                        <NavLink to="/openBook" state={book}>
-                            Read Book
-                        </NavLink>
-                    </Button> */}
-                    {/* <Button
-                        size="small"
-                        component="a"
-                        href={formats["text/html"]}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                    >
-                        Read Book
-                    </Button> */}
                 </CardActions>
             </Card>
         </div>

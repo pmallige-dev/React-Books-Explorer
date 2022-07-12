@@ -6,10 +6,12 @@ import { BooksContext } from "../../context/books.context";
 import BooksList from "../../components/books-list/books-list.component";
 import SearchBookList from "../../components/search-book-list/searchBookList.component";
 import ButtonComponent from "../../components/button/button.component";
+import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
+
 
 const Genre = () => {
 
-    const { isLoading, isSearchSubmit, categorySelected, searchBtnClose, onSearchBtnCloseClick, resetSearchWithCategorySelected } = useContext(BooksContext);
+    const { isLoading, isFullPageLoading, isSearchSubmit, categorySelected, searchBtnClose, onSearchBtnCloseClick, resetSearchWithCategorySelected } = useContext(BooksContext);
 
     const btnOnClickHandler = () => {
         onSearchBtnCloseClick();
@@ -23,43 +25,43 @@ const Genre = () => {
             </Typography>
             <SearchBox />
             {
-                isSearchSubmit ? (
-                    isLoading ?
-                        <Container align="center" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-                            <CircularProgress />
-                        </Container> :
-                        (<Fragment>
-                            {
-                                searchBtnClose ?
-                                    <Fragment /> :
-                                    (
-                                        <Fragment>
-                                            <ButtonComponent
-                                                btnName="Close Search Results"
-                                                onClick={btnOnClickHandler}
-                                                align="center"
-                                                style={{ paddingBottom: '20px' }}
-                                            />
-                                            <SearchBookList />
-                                            <ButtonComponent
-                                                btnName="Close Search Results"
-                                                onClick={btnOnClickHandler}
-                                                align="center"
-                                                style={{ paddingBottom: '20px' }}
-                                            />
-                                        </Fragment>
-                                    )
-                            }
-                        </Fragment>)
-                ) :
+                isFullPageLoading && <LoadingBackdrop />
+            }
+            {
+                isSearchSubmit && isFullPageLoading && <LoadingBackdrop />
+            }
+            {
+                isSearchSubmit && !searchBtnClose && (
+                    <Fragment>
+                        <ButtonComponent
+                            btnName="Close Search Results"
+                            onClick={btnOnClickHandler}
+                            align="center"
+                            style={{ paddingBottom: '20px' }}
+                        />
+                        <SearchBookList />
+                        <ButtonComponent
+                            btnName="Close Search Results"
+                            onClick={btnOnClickHandler}
+                            align="center"
+                            style={{ paddingBottom: '20px' }}
+                        />
+                    </Fragment>
+                )
+            }
+            {
+                searchBtnClose && isFullPageLoading && <LoadingBackdrop />
+            }
+            {
+                (!isSearchSubmit || searchBtnClose) && (
                     <Fragment>
                         <BooksList />
                         <Container align="center" style={{ paddingTop: '20px' }}>
                             {isLoading && <CircularProgress />}
                         </Container>
                     </Fragment>
+                )
             }
-
         </div>
     )
 }
