@@ -153,10 +153,10 @@ export const BooksProvider = ({ children }) => {
     };
 
     const onCategorySelected = (category) => {
-        setCategoryBookList(initialState.bookList)
+        setCategoryBookList(initialState.categoryBookList)
         setPage(initialState.page)
         setIsLoading(initialState.isLoading);
-        setIsFullPageLoading(initialState.isLoading);
+        setIsFullPageLoading(initialState.isFullPageLoading);
         setCategorySelected(category.replace(' ', '%20'));
     }
 
@@ -167,10 +167,10 @@ export const BooksProvider = ({ children }) => {
 
     const onSearchSubmit = (event) => {
         event.preventDefault();
-        setIsFullPageLoading(initialState.isLoading);
+        setIsFullPageLoading(initialState.isFullPageLoading);
         setIsSearchSubmit(true);
         setHomePageSearchSubmit(true);
-        setGenrePageSearchSubmit(initialState.isSearchSubmit);
+        setGenrePageSearchSubmit(initialState.genrePageSearchSubmit);
         setSearchBtnClose(initialState.searchBtnClose);
         fetchingBooksFromAPIBasedOnSearch();
     };
@@ -179,7 +179,7 @@ export const BooksProvider = ({ children }) => {
         event.preventDefault();
         setIsFullPageLoading(true);
         setIsSearchSubmit(true);
-        setHomePageSearchSubmit(initialState.isSearchSubmit);
+        setHomePageSearchSubmit(initialState.homePageSearchSubmit);
         setGenrePageSearchSubmit(true)
         setSearchBtnClose(initialState.searchBtnClose);
         setPage(initialState.page);
@@ -196,9 +196,9 @@ export const BooksProvider = ({ children }) => {
     }
 
     const resetSearchWithCategorySelected = () => {
-        setCategoryBookList(initialState.bookList);
+        setCategoryBookList(initialState.categoryBookList);
         setPage(initialState.page);
-        setIsFullPageLoading(initialState.isLoading);
+        setIsFullPageLoading(initialState.isFullPageLoading);
         fetchBooks();
     }
 
