@@ -17,25 +17,38 @@ export const BooksProvider = ({ children }) => {
     const initialState = {
         page: 1,
         isLoading: true,
+        isFullPageLoading: true,
         searchField: '',
         bookList: [],
+        categoryBookList: [],
+        searchBookList: [],
         filteredBookList: [],
+        categoryFilteredBookList: [],
+        searchFilteredBookList: [],
         categorySelected: '',
         isSearchSubmit: false,
-        searchBtnClose: false
+        homePageSearchSubmit: false,
+        genrePageSearchSubmit: false,
+        searchBtnClose: false,
+        homePageLoad: false,
+        genrePageLoad: false
     }
 
     const [page, setPage] = useState(initialState.page);
     const [isLoading, setIsLoading] = useState(initialState.isLoading);
-    const [isFullPageLoading, setIsFullPageLoading] = useState(initialState.isLoading);
+    const [isFullPageLoading, setIsFullPageLoading] = useState(initialState.isFullPageLoading);
     const [searchField, setSearchField] = useState(initialState.searchField);
-    const [categoryBookList, setCategoryBookList] = useState(initialState.bookList);
-    const [searchBookList, setSearchBookList] = useState(initialState.bookList);
-    const [categoryFilteredBookList, setCategoryFilteredBookList] = useState(initialState.bookList);
-    const [searchFilteredBookList, setSearchFilteredBookList] = useState(initialState.bookList);
+    const [categoryBookList, setCategoryBookList] = useState(initialState.categoryBookList);
+    const [searchBookList, setSearchBookList] = useState(initialState.searchBookList);
+    const [categoryFilteredBookList, setCategoryFilteredBookList] = useState(initialState.categoryFilteredBookList);
+    const [searchFilteredBookList, setSearchFilteredBookList] = useState(initialState.searchFilteredBookList);
     const [categorySelected, setCategorySelected] = useState(initialState.categorySelected);
     const [isSearchSubmit, setIsSearchSubmit] = useState(initialState.isSearchSubmit);
+    const [homePageSearchSubmit, setHomePageSearchSubmit] = useState(initialState.homePageSearchSubmit);
+    const [genrePageSearchSubmit, setGenrePageSearchSubmit] = useState(initialState.genrePageSearchSubmit);
     const [searchBtnClose, setSearchBtnClose] = useState(initialState.searchBtnClose);
+    const [homePageLoad, setHomePageLoad] = useState(initialState.homePageLoad);
+    const [genrePageLoad, setGenrePageLoad] = useState(initialState.genrePageLoad);
 
     const mainUrl = `https://gutendex.com/books`;
     const urlSearchParams = `?search=${searchField}`;
@@ -137,6 +150,8 @@ export const BooksProvider = ({ children }) => {
         event.preventDefault();
         setIsFullPageLoading(initialState.isLoading);
         setIsSearchSubmit(true);
+        setHomePageSearchSubmit(true);
+        setGenrePageSearchSubmit(initialState.isSearchSubmit);
         setSearchBtnClose(initialState.searchBtnClose);
         fetchingBooksFromAPIBasedOnSearch();
     };
@@ -145,6 +160,8 @@ export const BooksProvider = ({ children }) => {
         event.preventDefault();
         setIsFullPageLoading(true);
         setIsSearchSubmit(true);
+        setHomePageSearchSubmit(initialState.isSearchSubmit);
+        setGenrePageSearchSubmit(true)
         setSearchBtnClose(initialState.searchBtnClose);
         setPage(initialState.page);
         fetchingBooksFromAPIBasedOnSearchAndCategory();
@@ -182,11 +199,17 @@ export const BooksProvider = ({ children }) => {
         isLoading,
         isFullPageLoading,
         isSearchSubmit,
+        homePageSearchSubmit,
+        genrePageSearchSubmit,
         setIsSearchSubmit,
         handleScroll,
         searchBtnClose,
         onSearchBtnCloseClick,
-        resetSearchWithCategorySelected
+        resetSearchWithCategorySelected,
+        homePageLoad, 
+        setHomePageLoad,
+        genrePageLoad, 
+        setGenrePageLoad
     }
 
     return <BooksContext.Provider value={value}>{children}</BooksContext.Provider>

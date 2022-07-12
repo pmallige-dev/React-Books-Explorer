@@ -14,7 +14,7 @@ import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.co
 
 const Home = () => {
 
-    const { isSearchSubmit, isLoading, isFullPageLoading, searchBtnClose, onSearchBtnCloseClick } = useContext(BooksContext);
+    const { isSearchSubmit, homePageSearchSubmit, isLoading, isFullPageLoading, searchBtnClose, onSearchBtnCloseClick } = useContext(BooksContext);
 
     const btnOnClickHandler = onSearchBtnCloseClick;
 
@@ -27,7 +27,7 @@ const Home = () => {
                     isSearchSubmit && isFullPageLoading && <LoadingBackdrop />
                 }
                 {
-                    isSearchSubmit && !searchBtnClose && (
+                    isSearchSubmit && !searchBtnClose && homePageSearchSubmit && (
                         <Fragment>
                             <ButtonComponent
                                 btnName="Close Search Results"

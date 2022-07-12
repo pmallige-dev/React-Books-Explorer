@@ -7,11 +7,31 @@ import BooksList from "../../components/books-list/books-list.component";
 import SearchBookList from "../../components/search-book-list/searchBookList.component";
 import ButtonComponent from "../../components/button/button.component";
 import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
+import { useEffect } from "react";
 
 
 const Genre = () => {
 
-    const { isLoading, isFullPageLoading, isSearchSubmit, categorySelected, searchBtnClose, onSearchBtnCloseClick, resetSearchWithCategorySelected } = useContext(BooksContext);
+    const {
+        isLoading,
+        isFullPageLoading,
+        isSearchSubmit,
+        genrePageSearchSubmit,
+        categorySelected,
+        searchBtnClose,
+        onSearchBtnCloseClick,
+        resetSearchWithCategorySelected,
+        genrePageLoad, 
+        setGenrePageLoad
+    } = useContext(BooksContext);
+
+    useEffect(() => {
+        setGenrePageLoad(true);
+
+        return () => {
+            setGenrePageLoad(false);
+        }
+    })
 
     const btnOnClickHandler = () => {
         onSearchBtnCloseClick();
@@ -31,7 +51,7 @@ const Genre = () => {
                 isSearchSubmit && isFullPageLoading && <LoadingBackdrop />
             }
             {
-                isSearchSubmit && !searchBtnClose && (
+                isSearchSubmit && !searchBtnClose && genrePageSearchSubmit && (
                     <Fragment>
                         <ButtonComponent
                             btnName="Close Search Results"
@@ -53,7 +73,7 @@ const Genre = () => {
                 searchBtnClose && isFullPageLoading && <LoadingBackdrop />
             }
             {
-                (!isSearchSubmit || searchBtnClose) && (
+                (!isSearchSubmit || searchBtnClose || genrePageLoad) && (
                     <Fragment>
                         <BooksList />
                         <Container align="center" style={{ paddingTop: '20px' }}>
