@@ -12,6 +12,7 @@ import { BooksContext } from "../../context/books.context";
 import ButtonComponent from "../../components/button/button.component";
 import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
 import SearchNotFound from "../../components/searchNotFound/SearchNotFound.component";
+import AllCategoriesListComponent from "../../components/allCategoriesListButton/AllCategoriesListButton.component";
 
 const Home = () => {
 
@@ -61,6 +62,8 @@ const Home = () => {
                     ))
                 }
             </Masonry>
+            <Typography variant="h5" align="center" gutterBottom>Explore our entire range of Categories</Typography>
+            <AllCategoriesListComponent />
         </Container>
     )
 }
