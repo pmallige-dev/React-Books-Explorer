@@ -39,10 +39,14 @@ const Genre = () => {
         resetSearchWithCategorySelected();
     }
 
+    // category.replace(' ', '%20')
+
     return (
         <Container>
             <Typography variant="h3" align="center" gutterBottom>
-                {categorySelected}
+                {
+                    categorySelected.replace('%20', ' ')
+                }
             </Typography>
             <SearchBox />
             {

@@ -12,7 +12,7 @@ import { BooksContext } from "../../context/books.context";
 import ButtonComponent from "../../components/button/button.component";
 import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
 import SearchNotFound from "../../components/searchNotFound/SearchNotFound.component";
-import AllCategoriesListComponent from "../../components/allCategoriesListButton/AllCategoriesListButton.component";
+import AllCategoriesListComponent from "../../components/allCategoriesListComponent/AllCategoriesListComponent.component";
 
 const Home = () => {
 
