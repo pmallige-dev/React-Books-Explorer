@@ -62,6 +62,7 @@ const Home = () => {
             </Masonry>
             <Typography variant="h5" align="center" gutterBottom>Explore our entire range of Categories</Typography>
             <AllCategoriesListComponent />
+            <Typography variant="h5" align="center" gutterBottom>Reached the End of the Line? No worries, more categories are on the way. Stay Tuned!</Typography>
         </Container>
     )
 }

@@ -7,12 +7,18 @@ const AllCategoriesListComponent = () => {
     const {
         aList,
         bList,
+        cList,
+        dList,
+        eList,
     } = allCategoriesAlphabeticalList;
 
     return (
         <div style={{ paddingBottom: '20px' }}>
             <AllCategoryButtonGroup Alphabet="A" alphabetListArray={aList} />
             <AllCategoryButtonGroup Alphabet="B" alphabetListArray={bList} />
+            <AllCategoryButtonGroup Alphabet="C" alphabetListArray={cList} />
+            <AllCategoryButtonGroup Alphabet="D" alphabetListArray={dList} />
+            <AllCategoryButtonGroup Alphabet="E" alphabetListArray={eList} />
         </div>
     )
 }

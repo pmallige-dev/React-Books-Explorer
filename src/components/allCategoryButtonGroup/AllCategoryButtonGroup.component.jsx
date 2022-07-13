@@ -9,7 +9,10 @@ const AllCategoryButtonGroup = ({ Alphabet, alphabetListArray }) => {
             <Typography
                 variant="h5"
                 align="center"
-                style={{ paddingBottom: '10px' }}
+                style={{ 
+                    paddingBottom: '10px',
+                    paddingTop: '20px'
+                }}
                 gutterBottom
             >
                 {Alphabet}

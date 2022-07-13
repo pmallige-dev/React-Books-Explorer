@@ -102,6 +102,8 @@ export const BooksProvider = ({ children }) => {
 
                     if (nextPageUrl === null) {
                         setNextPageStatus(false);
+                        if (page >= 2)
+                            setPage(initialState.page);
                     } else {
                         setNextPageStatus(initialState.nextPageStatus);
                     }
