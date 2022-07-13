@@ -8,7 +8,7 @@ import SearchBookList from "../../components/search-book-list/searchBookList.com
 import ButtonComponent from "../../components/button/button.component";
 import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
 import SearchNotFound from "../../components/searchNotFound/SearchNotFound.component";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Genre = () => {
 
@@ -21,18 +21,22 @@ const Genre = () => {
         searchBtnClose,
         onSearchBtnCloseClick,
         resetSearchWithCategorySelected,
-        genrePageLoad,
-        setGenrePageLoad,
         searchStringNotFound
     } = useContext(BooksContext);
 
+    const [genrePageLoad, setGenrePageLoad] = useState(false);
+
     useEffect(() => {
+        window.scrollTo(0, 0);
         setGenrePageLoad(true);
+        console.log('Genre Page MOUNT');
+
 
         return () => {
             setGenrePageLoad(false);
+            console.log('Genre Page UNMOUNT');
         }
-    })
+    }, []);
 
     const btnOnClickHandler = () => {
         onSearchBtnCloseClick();
@@ -84,7 +88,7 @@ const Genre = () => {
             {
                 (!isSearchSubmit || (searchBtnClose && genrePageLoad)) && (
                     <Fragment>
-                        <BooksList />
+                        <BooksList infiniteScrollEnable={true}/>
                         <Container align="center" style={{ paddingTop: '20px' }}>
                             {isLoading && <CircularProgress />}
                         </Container>

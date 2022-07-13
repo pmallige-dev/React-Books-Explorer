@@ -3,17 +3,22 @@ import { BooksContext } from "../../context/books.context";
 import BookComponent from "../book/book.component";
 import { Masonry } from "@mui/lab";
 
-const BooksList = () => {
+const BooksList = ({ infiniteScrollEnable }) => {
 
-    const { categoryFilteredBookList, handleScroll } = useContext(BooksContext);
+    const { categoryFilteredBookList, page, setPage } = useContext(BooksContext);
 
-    const windowScrollhandler = handleScroll;
+    const handleScroll = () => {
+        if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.offsetHeight && infiniteScrollEnable) {
+            setPage(page + 1);
+            console.log(`Handle Scroll IF CASE triggered and Page is ${page}`);
+        }
+    };
 
     useEffect(() => {
-        window.addEventListener("scroll", windowScrollhandler);
+        window.addEventListener("scroll", handleScroll);
 
         return () => {
-            window.removeEventListener("scroll", windowScrollhandler);
+            window.removeEventListener("scroll", handleScroll);
         }
     }, []);
 

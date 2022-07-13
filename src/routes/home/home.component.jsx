@@ -20,8 +20,6 @@ const Home = () => {
 
     const btnOnClickHandler = onSearchBtnCloseClick;
 
-    console.log(searchStringNotFound);
-
     return (
         <Container>
             <Container>

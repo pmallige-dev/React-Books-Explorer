@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { categories } from '../data/categories'
+import { allCategories } from "../data/allCategories";
 
 export const BooksContext = createContext({
     page: 1,
@@ -16,6 +16,7 @@ export const BooksProvider = ({ children }) => {
 
     const initialState = {
         page: 1,
+        nextPageStatus: true,
         isLoading: true,
         isFullPageLoading: true,
         searchField: '',
@@ -31,11 +32,11 @@ export const BooksProvider = ({ children }) => {
         genrePageSearchSubmit: false,
         searchBtnClose: false,
         homePageLoad: false,
-        genrePageLoad: false,
         searchStringNotFound: false,
     }
 
     const [page, setPage] = useState(initialState.page);
+    const [nextPageStatus, setNextPageStatus] = useState(initialState.nextPageStatus);
     const [isLoading, setIsLoading] = useState(initialState.isLoading);
     const [isFullPageLoading, setIsFullPageLoading] = useState(initialState.isFullPageLoading);
     const [searchField, setSearchField] = useState(initialState.searchField);
@@ -49,24 +50,23 @@ export const BooksProvider = ({ children }) => {
     const [genrePageSearchSubmit, setGenrePageSearchSubmit] = useState(initialState.genrePageSearchSubmit);
     const [searchBtnClose, setSearchBtnClose] = useState(initialState.searchBtnClose);
     const [homePageLoad, setHomePageLoad] = useState(initialState.homePageLoad);
-    const [genrePageLoad, setGenrePageLoad] = useState(initialState.genrePageLoad);
+    
     const [searchStringNotFound, setSearchStringNotFound] = useState(initialState.searchStringNotFound);
 
     const mainUrl = `https://gutendex.com/books`;
     const urlSearchParams = `?search=${searchField}`;
     const urlSearchParamsForCategory = `?search=${searchField}&topic=${categorySelected}`;
     const urlCategoryParams = `/?page=${page}&topic=${categorySelected}`;
-    const windowUrl = window.location.href;
+    const windowUrl = decodeURI(window.location.href);
 
     // To fetch Books 
     useEffect(() => {
-        setIsLoading(initialState.isLoading);
         fetchBooks();
     }, [page, categorySelected]);
 
     // To set the category selected as the category we see in the URL so that the respective books are displayed upon page load/refresh
     useEffect(() => {
-        categories.map((category) => {
+        allCategories.map((category) => {
             if (windowUrl.includes(category.title)) {
                 setCategorySelected(category.title);
             }
@@ -91,18 +91,31 @@ export const BooksProvider = ({ children }) => {
 
     const fetchBooks = async () => {
         try {
-            if (categorySelected !== '') {
-                const fetchUrl = await fetch(`${mainUrl}${urlCategoryParams}`);
-                const response = await fetchUrl.json();
-                const bookResults = await response.results;
+            if (categorySelected !== '' && nextPageStatus) {
+                setIsLoading(initialState.isLoading);
+                try {
+                    const fetchUrl = await fetch(`${mainUrl}${urlCategoryParams}`);
+                    console.log(fetchUrl);
+                    const response = await fetchUrl.json();
+                    const nextPageUrl = await response.next;
+                    const bookResults = await response.results;
 
-                setCategoryBookList((oldBooksList) => {
-                    if (page === 1 && bookResults !== []) {
-                        return bookResults
+                    if (nextPageUrl === null) {
+                        setNextPageStatus(false);
                     } else {
-                        return [...oldBooksList, ...bookResults]
+                        setNextPageStatus(initialState.nextPageStatus);
                     }
-                })
+
+                    setCategoryBookList((oldBooksList) => {
+                        if (page === 1 && bookResults !== []) {
+                            return bookResults
+                        } else {
+                            return [...oldBooksList, ...bookResults]
+                        }
+                    })
+                } catch (error) {
+                    console.log(error);
+                }
             } else {
                 return
             }
@@ -121,7 +134,6 @@ export const BooksProvider = ({ children }) => {
         const response = await fetchUrl.json();
         let bookSearchresults = await response.results;
         const bookCount = await response.count;
-        console.log(bookCount);
         if (bookCount === 0) {
             setSearchStringNotFound(true);
         } else {
@@ -136,7 +148,6 @@ export const BooksProvider = ({ children }) => {
         const response = await fetchUrl.json();
         let bookSearchresults = await response.results;
         const bookCount = await response.count;
-        console.log(bookCount);
         if (bookCount === 0) {
             setSearchStringNotFound(true);
         } else {
@@ -146,17 +157,13 @@ export const BooksProvider = ({ children }) => {
         setIsFullPageLoading(false);
     }
 
-    const handleScroll = () => {
-        if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.offsetHeight) {
-            setPage(page + 1);
-        }
-    };
-
     const onCategorySelected = (category) => {
-        setCategoryBookList(initialState.categoryBookList)
-        setPage(initialState.page)
+        window.scrollTo(0, 0);
+        setCategoryBookList(initialState.categoryBookList);
+        setPage(initialState.page);
         setIsLoading(initialState.isLoading);
         setIsFullPageLoading(initialState.isFullPageLoading);
+        setNextPageStatus(initialState.nextPageStatus);
         setCategorySelected(category.replace(' ', '%20'));
     }
 
@@ -193,6 +200,7 @@ export const BooksProvider = ({ children }) => {
     const onSearchBtnCloseClick = () => {
         setSearchBtnClose(true);
         setIsSearchSubmit(initialState.isSearchSubmit);
+        window.scrollTo(0, 0);
     }
 
     const resetSearchWithCategorySelected = () => {
@@ -204,6 +212,7 @@ export const BooksProvider = ({ children }) => {
 
     const value = {
         page,
+        setPage,
         searchField,
         categoryBookList,
         searchBookList,
@@ -221,14 +230,11 @@ export const BooksProvider = ({ children }) => {
         homePageSearchSubmit,
         genrePageSearchSubmit,
         setIsSearchSubmit,
-        handleScroll,
         searchBtnClose,
         onSearchBtnCloseClick,
         resetSearchWithCategorySelected,
-        homePageLoad, 
+        homePageLoad,
         setHomePageLoad,
-        genrePageLoad, 
-        setGenrePageLoad,
         searchStringNotFound
     }
 

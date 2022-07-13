@@ -1,13 +1,13 @@
 import { Card, Container } from "@mui/material";
 import { Fragment } from "react";
-import { allCategoriesList } from "../../data/allCategories";
+import { allCategoriesAlphabeticalList } from "../../data/allCategoriesAlphabetical";
 import AllCategoryButtonGroup from "../allCategoryButtonGroup/AllCategoryButtonGroup.component";
 
 const AllCategoriesListComponent = () => {
     const {
         aList,
         bList,
-    } = allCategoriesList;
+    } = allCategoriesAlphabeticalList;
 
     return (
         <div style={{ paddingBottom: '20px' }}>
