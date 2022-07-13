@@ -9,11 +9,13 @@ import ButtonComponent from "../../components/button/button.component";
 import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
 import SearchNotFound from "../../components/searchNotFound/SearchNotFound.component";
 import { useEffect, useState } from "react";
+import EmptyLinesComponent from "../../components/emptyLinesComponent/EmptyLinesComponent.component";
 
 const Genre = () => {
 
     const {
         isLoading,
+        setPage,
         isFullPageLoading,
         isSearchSubmit,
         genrePageSearchSubmit,
@@ -28,6 +30,7 @@ const Genre = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        // setPage(1);
         setGenrePageLoad(true);
         console.log('Genre Page MOUNT');
 
@@ -57,6 +60,9 @@ const Genre = () => {
                 isFullPageLoading && <LoadingBackdrop />
             }
             {
+                isFullPageLoading && <EmptyLinesComponent />
+            }
+            {
                 isSearchSubmit && isFullPageLoading && <LoadingBackdrop />
             }
             {
@@ -83,7 +89,7 @@ const Genre = () => {
                 )
             }
             {
-                searchBtnClose && isFullPageLoading && <LoadingBackdrop />
+                searchBtnClose && isFullPageLoading && <LoadingBackdrop /> 
             }
             {
                 (!isSearchSubmit || (searchBtnClose && genrePageLoad)) && (
@@ -91,6 +97,9 @@ const Genre = () => {
                         <BooksList infiniteScrollEnable={true}/>
                         <Container align="center" style={{ paddingTop: '20px' }}>
                             {isLoading && <CircularProgress />}
+                        </Container>
+                        <Container align="center" style={{ paddingTop: '20px' }}>
+                            {isLoading && <EmptyLinesComponent />}
                         </Container>
                     </Fragment>
                 )

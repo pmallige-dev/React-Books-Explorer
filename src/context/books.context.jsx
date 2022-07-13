@@ -59,6 +59,12 @@ export const BooksProvider = ({ children }) => {
     const urlCategoryParams = `/?page=${page}&topic=${categorySelected}`;
     const windowUrl = decodeURI(window.location.href);
 
+    // window.onload = function exampleFunction() {
+    //     window.scrollTo(0, 0);
+    //     setPage(initialState.page);
+    // }
+
+
     // To fetch Books 
     useEffect(() => {
         fetchBooks();

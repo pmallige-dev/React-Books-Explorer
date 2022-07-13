@@ -10,7 +10,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <BooksProvider>
-          <App />
+        <App />
       </BooksProvider>
     </BrowserRouter>
   </React.StrictMode>
