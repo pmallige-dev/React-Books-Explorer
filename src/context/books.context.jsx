@@ -221,7 +221,9 @@ export const BooksProvider = ({ children }) => {
         setPage,
         searchField,
         categoryBookList,
+        setCategoryBookList,
         searchBookList,
+        setSearchBookList,
         categoryFilteredBookList,
         searchFilteredBookList,
         categorySelected,
@@ -242,7 +244,8 @@ export const BooksProvider = ({ children }) => {
         homePageLoad,
         setHomePageLoad,
         searchStringNotFound,
-        booksNotFound
+        booksNotFound,
+        setBooksNotFound
     }
 
     return <BooksContext.Provider value={value}>{children}</BooksContext.Provider>

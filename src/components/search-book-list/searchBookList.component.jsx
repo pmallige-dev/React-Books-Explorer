@@ -5,12 +5,12 @@ import Masonry from "@mui/lab/Masonry";
 
 const SearchBookList = () => {
 
-    const { searchFilteredBookList, handleScroll } = useContext(BooksContext);
-
-    const windowScrollhandler = handleScroll;
+    const { searchFilteredBookList, setSearchBookList } = useContext(BooksContext);
 
     useEffect(() => {
-        window.removeEventListener("scroll", windowScrollhandler);
+        return () => {
+            setSearchBookList([]);
+        }
     }, [])
 
     return (

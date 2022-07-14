@@ -6,13 +6,19 @@ import { Grid, Hidden } from "@mui/material";
 
 const BooksList = ({ infiniteScrollEnable }) => {
 
-    const { categoryFilteredBookList, setPage, isLoading, isFullPageLoading } = useContext(BooksContext);
+    const { categoryFilteredBookList, page, setPage, setCategoryBookList, setBooksNotFound } = useContext(BooksContext);
     const loader = useRef(null);
 
     const handleObserver = useCallback((entries) => {
         const target = entries[0];
         if (target.isIntersecting) {
             setPage((prev) => prev + 1);
+        }
+    }, []);
+
+    useEffect(() => {
+        return () => {
+            setCategoryBookList([]);
         }
     }, []);
 
@@ -28,13 +34,6 @@ const BooksList = ({ infiniteScrollEnable }) => {
 
     return (
         <Fragment>
-            {/* <Grid container spacing={4}>
-                {categoryFilteredBookList.map(book => (
-                    <Grid item xs={3} key={book.id}>
-                        <BookComponent key={book.id} book={book} />
-                    </Grid>             
-                ))}
-            </Grid> */}
             <Hidden smUp>
                 <Grid spacing={2}>
                     {categoryFilteredBookList.map(book => (
