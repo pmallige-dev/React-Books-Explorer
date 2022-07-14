@@ -2,6 +2,7 @@ import { Fragment, useContext, useEffect, useCallback, useRef } from "react";
 import { BooksContext } from "../../context/books.context";
 import BookComponent from "../book/book.component";
 import { Masonry } from "@mui/lab";
+import { Grid, Hidden } from "@mui/material";
 
 const BooksList = ({ infiniteScrollEnable }) => {
 
@@ -25,15 +26,40 @@ const BooksList = ({ infiniteScrollEnable }) => {
         if (loader.current) observer.observe(loader.current);
     }, [handleObserver]);
 
-    // console.log(`isLoading is ${isLoading} & isFullPageLoading is ${isFullPageLoading}`);
-
     return (
         <Fragment>
-            <Masonry columns={{ xs: 1, sm: 2, md: 3, lg: 4 }} spacing={2}>
+            {/* <Grid container spacing={4}>
                 {categoryFilteredBookList.map(book => (
-                    <BookComponent key={book.id} book={book} />
+                    <Grid item xs={3} key={book.id}>
+                        <BookComponent key={book.id} book={book} />
+                    </Grid>             
                 ))}
-            </Masonry>
+            </Grid> */}
+            <Hidden smUp>
+                <Grid spacing={2}>
+                    {categoryFilteredBookList.map(book => (
+                        <Grid
+                            item
+                            spacing={2}
+                            key={book.id}
+                            style={{
+                                paddingTop: '10px',
+                                paddingBottom: '10px'
+                            }}
+                        >
+                            <BookComponent key={book.id} book={book} />
+                        </Grid>
+                    ))}
+                </Grid>
+            </Hidden>
+            <Hidden smDown>
+                <Masonry columns={{ sm: 2, md: 3, lg: 4 }} spacing={2}>
+                    {categoryFilteredBookList.map(book => (
+                        <BookComponent key={book.id} book={book} />
+                    ))}
+                </Masonry>
+            </Hidden>
+
             {
                 (infiniteScrollEnable) ?
                     <div /> :
