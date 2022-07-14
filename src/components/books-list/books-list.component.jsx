@@ -5,15 +5,8 @@ import { Masonry } from "@mui/lab";
 
 const BooksList = ({ infiniteScrollEnable }) => {
 
-    const { categoryFilteredBookList, setPage } = useContext(BooksContext);
+    const { categoryFilteredBookList, setPage, isLoading, isFullPageLoading } = useContext(BooksContext);
     const loader = useRef(null);
-
-    // const handleScroll = () => {
-    //     if (Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.offsetHeight && infiniteScrollEnable) {
-    //         setPage(page + 1);
-    //         console.log(`Handle Scroll IF CASE triggered and Page is ${page}`);
-    //     }
-    // };
 
     const handleObserver = useCallback((entries) => {
         const target = entries[0];
@@ -32,14 +25,7 @@ const BooksList = ({ infiniteScrollEnable }) => {
         if (loader.current) observer.observe(loader.current);
     }, [handleObserver]);
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    //     window.addEventListener("scroll", handleScroll);
-
-    //     return () => {
-    //         window.removeEventListener("scroll", handleScroll);
-    //     }
-    // }, []);
+    // console.log(`isLoading is ${isLoading} & isFullPageLoading is ${isFullPageLoading}`);
 
     return (
         <Fragment>
@@ -48,10 +34,12 @@ const BooksList = ({ infiniteScrollEnable }) => {
                     <BookComponent key={book.id} book={book} />
                 ))}
             </Masonry>
-            <div ref={loader} />
+            {
+                (infiniteScrollEnable) ?
+                    <div /> :
+                    <div ref={loader} />
+            }
         </Fragment>
-
-
     )
 }
 

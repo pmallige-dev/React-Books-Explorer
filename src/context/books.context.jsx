@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useState, useEffect } from "react";
 import { allCategories } from "../data/allCategories";
 
@@ -33,6 +34,7 @@ export const BooksProvider = ({ children }) => {
         searchBtnClose: false,
         homePageLoad: false,
         searchStringNotFound: false,
+        booksNotFound: false,
     }
 
     const [page, setPage] = useState(initialState.page);
@@ -50,20 +52,14 @@ export const BooksProvider = ({ children }) => {
     const [genrePageSearchSubmit, setGenrePageSearchSubmit] = useState(initialState.genrePageSearchSubmit);
     const [searchBtnClose, setSearchBtnClose] = useState(initialState.searchBtnClose);
     const [homePageLoad, setHomePageLoad] = useState(initialState.homePageLoad);
-    
     const [searchStringNotFound, setSearchStringNotFound] = useState(initialState.searchStringNotFound);
+    const [booksNotFound, setBooksNotFound] = useState(initialState.booksNotFound);
 
     const mainUrl = `https://gutendex.com/books`;
     const urlSearchParams = `?search=${searchField}`;
     const urlSearchParamsForCategory = `?search=${searchField}&topic=${categorySelected}`;
     const urlCategoryParams = `/?page=${page}&topic=${categorySelected}`;
     const windowUrl = decodeURI(window.location.href);
-
-    // window.onload = function exampleFunction() {
-    //     window.scrollTo(0, 0);
-    //     setPage(initialState.page);
-    // }
-
 
     // To fetch Books 
     useEffect(() => {
@@ -100,11 +96,9 @@ export const BooksProvider = ({ children }) => {
             if (categorySelected !== '' && nextPageStatus) {
                 setIsLoading(initialState.isLoading);
                 try {
-                    const fetchUrl = await fetch(`${mainUrl}${urlCategoryParams}`);
-                    console.log(fetchUrl);
-                    const response = await fetchUrl.json();
-                    const nextPageUrl = await response.next;
-                    const bookResults = await response.results;
+                    const fetchUrl = await axios.get(`${mainUrl}${urlCategoryParams}`);
+                    const nextPageUrl = await fetchUrl.data.next;
+                    const bookResults = await fetchUrl.data.results;
 
                     if (nextPageUrl === null) {
                         setNextPageStatus(false);
@@ -114,6 +108,8 @@ export const BooksProvider = ({ children }) => {
                         setNextPageStatus(initialState.nextPageStatus);
                     }
 
+                    setBooksNotFound(initialState.booksNotFound);
+
                     setCategoryBookList((oldBooksList) => {
                         if (page === 1 && bookResults !== []) {
                             return bookResults
@@ -122,7 +118,11 @@ export const BooksProvider = ({ children }) => {
                         }
                     })
                 } catch (error) {
-                    console.log(error);
+                    const errorResponse = error.response;
+                    console.log(errorResponse);
+                    if (errorResponse.status === 404) {
+                        setBooksNotFound(true);
+                    }
                 }
             } else {
                 return
@@ -138,10 +138,9 @@ export const BooksProvider = ({ children }) => {
     }
 
     const fetchingBooksFromAPIBasedOnSearch = async () => {
-        const fetchUrl = await fetch(`${mainUrl}${urlSearchParams}`);
-        const response = await fetchUrl.json();
-        let bookSearchresults = await response.results;
-        const bookCount = await response.count;
+        const fetchUrl = await axios.get(`${mainUrl}${urlSearchParams}`);
+        let bookSearchresults = await fetchUrl.data.results;
+        const bookCount = await fetchUrl.data.count;
         if (bookCount === 0) {
             setSearchStringNotFound(true);
         } else {
@@ -152,10 +151,9 @@ export const BooksProvider = ({ children }) => {
     }
 
     const fetchingBooksFromAPIBasedOnSearchAndCategory = async () => {
-        const fetchUrl = await fetch(`${mainUrl}${urlSearchParamsForCategory}`);
-        const response = await fetchUrl.json();
-        let bookSearchresults = await response.results;
-        const bookCount = await response.count;
+        const fetchUrl = await axios.get(`${mainUrl}${urlSearchParamsForCategory}`);
+        let bookSearchresults = await fetchUrl.data.results;
+        const bookCount = await fetchUrl.data.count;
         if (bookCount === 0) {
             setSearchStringNotFound(true);
         } else {
@@ -243,7 +241,8 @@ export const BooksProvider = ({ children }) => {
         resetSearchWithCategorySelected,
         homePageLoad,
         setHomePageLoad,
-        searchStringNotFound
+        searchStringNotFound,
+        booksNotFound
     }
 
     return <BooksContext.Provider value={value}>{children}</BooksContext.Provider>

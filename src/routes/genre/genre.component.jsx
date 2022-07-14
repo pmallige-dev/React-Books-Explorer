@@ -9,13 +9,12 @@ import ButtonComponent from "../../components/button/button.component";
 import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
 import SearchNotFound from "../../components/searchNotFound/SearchNotFound.component";
 import { useEffect, useState } from "react";
-import EmptyLinesComponent from "../../components/emptyLinesComponent/EmptyLinesComponent.component";
+import NextBooksNotFoundComponent from "../../components/nextBooksNotFoundComponent/NextBooksNotFoundComponent.component";
 
 const Genre = () => {
 
     const {
         isLoading,
-        setPage,
         isFullPageLoading,
         isSearchSubmit,
         genrePageSearchSubmit,
@@ -23,21 +22,19 @@ const Genre = () => {
         searchBtnClose,
         onSearchBtnCloseClick,
         resetSearchWithCategorySelected,
-        searchStringNotFound
+        searchStringNotFound,
+        booksNotFound
     } = useContext(BooksContext);
 
     const [genrePageLoad, setGenrePageLoad] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        // setPage(1);
         setGenrePageLoad(true);
-        console.log('Genre Page MOUNT');
 
 
         return () => {
             setGenrePageLoad(false);
-            console.log('Genre Page UNMOUNT');
         }
     }, []);
 
@@ -45,8 +42,6 @@ const Genre = () => {
         onSearchBtnCloseClick();
         resetSearchWithCategorySelected();
     }
-
-    // category.replace(' ', '%20')
 
     return (
         <Container>
@@ -58,9 +53,6 @@ const Genre = () => {
             <SearchBox />
             {
                 isFullPageLoading && <LoadingBackdrop />
-            }
-            {
-                isFullPageLoading && <EmptyLinesComponent />
             }
             {
                 isSearchSubmit && isFullPageLoading && <LoadingBackdrop />
@@ -94,13 +86,17 @@ const Genre = () => {
             {
                 (!isSearchSubmit || (searchBtnClose && genrePageLoad)) && (
                     <Fragment>
-                        <BooksList infiniteScrollEnable={true}/>
+                        {
+                            isLoading ? 
+                            <BooksList infiniteScrollEnable={false}/> :
+                            <BooksList infiniteScrollEnable={true}/>
+                        }                       
                         <Container align="center" style={{ paddingTop: '20px' }}>
                             {isLoading && <CircularProgress />}
                         </Container>
-                        <Container align="center" style={{ paddingTop: '20px' }}>
-                            {isLoading && <EmptyLinesComponent />}
-                        </Container>
+                        {
+                            booksNotFound && <NextBooksNotFoundComponent />
+                        }
                     </Fragment>
                 )
             }
