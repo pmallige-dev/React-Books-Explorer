@@ -1,5 +1,3 @@
-import { Card, Container } from "@mui/material";
-import { Fragment } from "react";
 import { allCategoriesAlphabeticalList } from "../../data/allCategoriesAlphabetical";
 import AllCategoryButtonGroup from "../allCategoryButtonGroup/AllCategoryButtonGroup.component";
 
@@ -15,7 +13,17 @@ const AllCategoriesListComponent = () => {
         hList,
         iList,
         jList,
-        lList
+        lList,
+        mList,
+        nList,
+        oList,
+        pList,
+        rList,
+        sList,
+        tList,
+        uList,
+        wList,
+        zList
     } = allCategoriesAlphabeticalList;
 
     return (
@@ -31,6 +39,16 @@ const AllCategoriesListComponent = () => {
             <AllCategoryButtonGroup Alphabet="I" alphabetListArray={iList} />
             <AllCategoryButtonGroup Alphabet="J" alphabetListArray={jList} />
             <AllCategoryButtonGroup Alphabet="L" alphabetListArray={lList} />
+            <AllCategoryButtonGroup Alphabet="M" alphabetListArray={mList} />
+            <AllCategoryButtonGroup Alphabet="N" alphabetListArray={nList} />
+            <AllCategoryButtonGroup Alphabet="O" alphabetListArray={oList} />
+            <AllCategoryButtonGroup Alphabet="P" alphabetListArray={pList} />
+            <AllCategoryButtonGroup Alphabet="R" alphabetListArray={rList} />
+            <AllCategoryButtonGroup Alphabet="S" alphabetListArray={sList} />
+            <AllCategoryButtonGroup Alphabet="T" alphabetListArray={tList} />
+            <AllCategoryButtonGroup Alphabet="U" alphabetListArray={uList} />
+            <AllCategoryButtonGroup Alphabet="W" alphabetListArray={wList} />
+            <AllCategoryButtonGroup Alphabet="Z" alphabetListArray={zList} />
         </div>
     )
 }

@@ -768,85 +768,530 @@ export const allCategoriesAlphabeticalList = {
     ],
     mList : [
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Manufacturing",
+            "route": "genre/Manufacturing",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Maps and Cartography",
+            "route": "genre/Maps and Cartography",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Masterpieces in Colour",
+            "route": "genre/Masterpieces in Colour",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Mathematics",
+            "route": "genre/Mathematics",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "McClure's Magazine",
+            "route": "genre/McClure's Magazine",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Medicine",
+            "route": "genre/Medicine",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Mediæval Town Series",
+            "route": "genre/Mediæval Town Series",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Microbiology",
+            "route": "genre/Microbiology",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Microscopy",
+            "route": "genre/Microscopy",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Mother Earth",
+            "route": "genre/Mother Earth",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Movie Books",
+            "route": "genre/Movie Books",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Mrs Whittelsey's Magazine for Mothers and Daughters",
+            "route": "genre/Mrs Whittelsey's Magazine for Mothers and Daughters",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Music",
+            "route": "genre/Music",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Mycology",
+            "route": "genre/Mycology",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Mystery Fiction",
+            "route": "genre/Mystery Fiction",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Mythology",
+            "route": "genre/Mythology",
+        },
+    ],
+    nList : [
+        {
+            "title": "Napoleonic",
+            "route": "genre/Napoleonic",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Native America",
+            "route": "genre/Native America",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Natural History",
+            "route": "genre/Natural History",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "New Zealand",
+            "route": "genre/New Zealand",
         },
         {
-            "title": "",
-            "route": "genre/",
+            "title": "Northern Nut Growers Association",
+            "route": "genre/Northern Nut Growers Association",
         },
-
+        {
+            "title": "Norway",
+            "route": "genre/Norway",
+        },
+        {
+            "title": "Notes and Queries",
+            "route": "genre/Notes and Queries",
+        },
+        {
+            "title": "Noteworthy Trials",
+            "route": "genre/Noteworthy Trials",
+        },
+    ],
+    oList : [
+        {
+            "title": "One Act Plays",
+            "route": "genre/One Act Plays",
+        },
+        {
+            "title": "Opera",
+            "route": "genre/Opera",
+        },
+        {
+            "title": "Our Young Folks",
+            "route": "genre/Our Young Folks",
+        },
+    ],
+    pList : [
+        {
+            "title": "PT Arte",
+            "route": "genre/PT Arte",
+        },
+        {
+            "title": "PT Biografia",
+            "route": "genre/PT Biografia",
+        },
+        {
+            "title": "PT Ciência e Técnica",
+            "route": "genre/PT Ciência e Técnica",
+        },
+        {
+            "title": "PT Contos",
+            "route": "genre/PT Contos",
+        },
+        {
+            "title": "PT História",
+            "route": "genre/PT História",
+        },
+        {
+            "title": "PT Infantil e Juvenil",
+            "route": "genre/PT Infantil e Juvenil",
+        },
+        {
+            "title": "PT Língua Portuguesa",
+            "route": "genre/PT Língua Portuguesa",
+        },
+        {
+            "title": "PT Navegações e Explorações",
+            "route": "genre/PT Navegações e Explorações",
+        },
+        {
+            "title": "PT Periódicos",
+            "route": "genre/PT Periódicos",
+        },
+        {
+            "title": "PT Poesia",
+            "route": "genre/PT Poesia",
+        },
+        {
+            "title": "PT Política e Sociedade",
+            "route": "genre/PT Política e Sociedade",
+        },
+        {
+            "title": "PT Romance",
+            "route": "genre/PT Romance",
+        },
+        {
+            "title": "PT Teatro",
+            "route": "genre/PT Teatro",
+        },
+        {
+            "title": "Paganism",
+            "route": "genre/Paganism",
+        },
+        {
+            "title": "Philosophy",
+            "route": "genre/Philosophy",
+        },
+        {
+            "title": "Photography",
+            "route": "genre/Photography",
+        },
+        {
+            "title": "Physics",
+            "route": "genre/Physics",
+        },
+        {
+            "title": "Physiology",
+            "route": "genre/Physiology",
+        },
+        {
+            "title": "Pirates, Buccaneers, Corsairs, etc",
+            "route": "genre/Pirates, Buccaneers, Corsairs, etc",
+        },
+        {
+            "title": "Plays",
+            "route": "genre/Plays",
+        },
+        {
+            "title": "Poetry, A Magazine of Verse",
+            "route": "genre/Poetry, A Magazine of Verse",
+        },
+        {
+            "title": "Poetry",
+            "route": "genre/Poetry",
+        },
+        {
+            "title": "Politics",
+            "route": "genre/Politics",
+        },
+        {
+            "title": "Popular Science Monthly",
+            "route": "genre/Popular Science Monthly",
+        },
+        {
+            "title": "Prairie Farmer",
+            "route": "genre/Prairie Farmer",
+        },
+        {
+            "title": "Precursors of Science Fiction",
+            "route": "genre/Precursors of Science Fiction",
+        },
+        {
+            "title": "Project Gutenberg",
+            "route": "genre/Project Gutenberg",
+        },
+        {
+            "title": "Psychology",
+            "route": "genre/Psychology",
+        },
+        {
+            "title": "Punch",
+            "route": "genre/Punch",
+        },
+        {
+            "title": "Punchinello",
+            "route": "genre/Punchinello",
+        },        
+    ],
+    rList : [
+        {
+            "title": "Racism",
+            "route": "genre/Racism",
+        },
+        {
+            "title": "Reference",
+            "route": "genre/Reference",
+        },
+        {
+            "title": "Romantic Fiction",
+            "route": "genre/Romantic Fiction",
+        },
+    ],
+    sList : [
+        {
+            "title": "School Stories",
+            "route": "genre/School Stories",
+        },
+        {
+            "title": "Science",
+            "route": "genre/Science",
+        },
+        {
+            "title": "Science Fiction",
+            "route": "genre/Science Fiction",
+        },
+        {
+            "title": "Science Fiction by Women",
+            "route": "genre/Science Fiction by Women",
+        },
+        {
+            "title": "Scientific American",
+            "route": "genre/Scientific American",
+        },
+        {
+            "title": "Scouts",
+            "route": "genre/Scouts",
+        },
+        {
+            "title": "Scribner's Magazine",
+            "route": "genre/Scribner's Magazine",
+        },
+        {
+            "title": "Short Stories",
+            "route": "genre/Short Stories",
+        },
+        {
+            "title": "Slavery",
+            "route": "genre/Slavery",
+        },
+        {
+            "title": "Sociology",
+            "route": "genre/Sociology",
+        },
+        {
+            "title": "South Africa",
+            "route": "genre/South Africa",
+        },
+        {
+            "title": "South America",
+            "route": "genre/South America",
+        },
+        {
+            "title": "Spanish American War",
+            "route": "genre/Spanish American War",
+        },
+        {
+            "title": "St. Nicholas Magazine for Boys and Girls",
+            "route": "genre/St. Nicholas Magazine for Boys and Girls",
+        },
+        {
+            "title": "Suffrage",
+            "route": "genre/Suffrage",
+        },
+    ],
+    tList : [
+        {
+            "title": "Technology",
+            "route": "genre/Technology",
+        },
+        {
+            "title": "The Aldine",
+            "route": "genre/The Aldine",
+        },
+        {
+            "title": "The American Architect and Building News",
+            "route": "genre/The American Architect and Building News",
+        },
+        {
+            "title": "The American Bee Journal",
+            "route": "genre/The American Bee Journal",
+        },
+        {
+            "title": "The American Journal of Archaeology",
+            "route": "genre/The American Journal of Archaeology",
+        },
+        {
+            "title": "The American Quarterly Review",
+            "route": "genre/The American Quarterly Review",
+        },
+        {
+            "title": "The Arena",
+            "route": "genre/The Arena",
+        },
+        {
+            "title": "The Argosy",
+            "route": "genre/The Argosy",
+        },
+        {
+            "title": "The Atlantic Monthly",
+            "route": "genre/The Atlantic Monthly",
+        },
+        {
+            "title": "The Bay State Monthly",
+            "route": "genre/The Bay State Monthly",
+        },
+        {
+            "title": "The Botanical Magazine",
+            "route": "genre/The Botanical Magazine",
+        },
+        {
+            "title": "The Brochure Series of Architectural Illustration",
+            "route": "genre/The Brochure Series of Architectural Illustration",
+        },
+        {
+            "title": "The Contemporary Review",
+            "route": "genre/The Contemporary Review",
+        },
+        {
+            "title": "The Economist",
+            "route": "genre/The Economist",
+        },
+        {
+            "title": "The Esperantist",
+            "route": "genre/The Esperantist",
+        },
+        {
+            "title": "The Galaxy",
+            "route": "genre/The Galaxy",
+        },
+        {
+            "title": "The Girls Own Paper",
+            "route": "genre/The Girls Own Paper",
+        },
+        {
+            "title": "The Great Round World And What Is Going On In It",
+            "route": "genre/The Great Round World And What Is Going On In It",
+        },
+        {
+            "title": "The Haslemere Museum Gazette",
+            "route": "genre/The Haslemere Museum Gazette",
+        },
+        {
+            "title": "The Idler",
+            "route": "genre/The Idler",
+        },
+        {
+            "title": "The Illustrated War News",
+            "route": "genre/The Illustrated War News",
+        },
+        {
+            "title": "The International Magazine of Literature, Art, and Science",
+            "route": "genre/The International Magazine of Literature, Art, and Science",
+        },
+        {
+            "title": "The Irish Penny Journal",
+            "route": "genre/The Irish Penny Journal",
+        },
+        {
+            "title": "The Journal of Negro History",
+            "route": "genre/The Journal of Negro History",
+        },
+        {
+            "title": "The Knickerbocker",
+            "route": "genre/The Knickerbocker",
+        },
+        {
+            "title": "The Mayflower",
+            "route": "genre/The Mayflower",
+        },
+        {
+            "title": "The Mentor",
+            "route": "genre/The Mentor",
+        },
+        {
+            "title": "The Mirror of Literature, Amusement, and Instruction",
+            "route": "genre/The Mirror of Literature, Amusement, and Instruction",
+        },
+        {
+            "title": "The Mirror of Taste, and Dramatic Censor",
+            "route": "genre/The Mirror of Taste, and Dramatic Censor",
+        },
+        {
+            "title": "The North American Medical and Surgical Journal",
+            "route": "genre/The North American Medical and Surgical Journal",
+        },
+        {
+            "title": "The Nursery",
+            "route": "genre/The Nursery",
+        },
+        {
+            "title": "The Philatelic Digital Library Project",
+            "route": "genre/The Philatelic Digital Library Project",
+        },
+        {
+            "title": "The Scrap Book",
+            "route": "genre/The Scrap Book",
+        },
+        {
+            "title": "The Speaker",
+            "route": "genre/The Speaker",
+        },
+        {
+            "title": "The Stars and Stripes",
+            "route": "genre/The Stars and Stripes",
+        },
+        {
+            "title": "The Strand Magazine",
+            "route": "genre/The Strand Magazine",
+        },
+        {
+            "title": "The Unpopular Review",
+            "route": "genre/The Unpopular Review",
+        },
+        {
+            "title": "The Writer",
+            "route": "genre/The Writer",
+        },
+        {
+            "title": "The Yellow Book",
+            "route": "genre/The Yellow Book",
+        },
+        {
+            "title": "Transportation",
+            "route": "genre/Transportation",
+        },
+        {
+            "title": "Travel",
+            "route": "genre/Travel",
+        },        
+    ],
+    uList : [
+        {
+            "title": "US Civil War",
+            "route": "genre/US Civil War",
+        },
+        {
+            "title": "United Kingdom",
+            "route": "genre/United Kingdom",
+        },
+        {
+            "title": "United States",
+            "route": "genre/United States",
+        },
+        {
+            "title": "United States Law",
+            "route": "genre/United States Law",
+        },
+    ],
+    wList : [
+        {
+            "title": "Western",
+            "route": "genre/Western",
+        },
+        {
+            "title": "Witchcraft",
+            "route": "genre/Witchcraft",
+        },
+        {
+            "title": "Women's Travel Journals",
+            "route": "genre/Women's Travel Journals",
+        },
+        {
+            "title": "Woodwork",
+            "route": "genre/Woodwork",
+        },
+        {
+            "title": "World War I",
+            "route": "genre/World War I",
+        },
+        {
+            "title": "World War II",
+            "route": "genre/World War II",
+        },
+    ],
+    zList : [
+        {
+            "title": "Zoology",
+            "route": "genre/Zoology",
+        },
     ]
 }
