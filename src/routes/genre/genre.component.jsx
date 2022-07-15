@@ -29,9 +29,7 @@ const Genre = () => {
     const [genrePageLoad, setGenrePageLoad] = useState(false);
 
     useEffect(() => {
-        window.scrollTo(0, 0);
         setGenrePageLoad(true);
-
 
         return () => {
             setGenrePageLoad(false);

@@ -10,6 +10,12 @@ const AllCategoriesListComponent = () => {
         cList,
         dList,
         eList,
+        fList,
+        gList,
+        hList,
+        iList,
+        jList,
+        lList
     } = allCategoriesAlphabeticalList;
 
     return (
@@ -19,6 +25,12 @@ const AllCategoriesListComponent = () => {
             <AllCategoryButtonGroup Alphabet="C" alphabetListArray={cList} />
             <AllCategoryButtonGroup Alphabet="D" alphabetListArray={dList} />
             <AllCategoryButtonGroup Alphabet="E" alphabetListArray={eList} />
+            <AllCategoryButtonGroup Alphabet="F" alphabetListArray={fList} />
+            <AllCategoryButtonGroup Alphabet="G" alphabetListArray={gList} />
+            <AllCategoryButtonGroup Alphabet="H" alphabetListArray={hList} />
+            <AllCategoryButtonGroup Alphabet="I" alphabetListArray={iList} />
+            <AllCategoryButtonGroup Alphabet="J" alphabetListArray={jList} />
+            <AllCategoryButtonGroup Alphabet="L" alphabetListArray={lList} />
         </div>
     )
 }

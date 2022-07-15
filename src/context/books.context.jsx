@@ -119,7 +119,6 @@ export const BooksProvider = ({ children }) => {
                     })
                 } catch (error) {
                     const errorResponse = error.response;
-                    console.log(errorResponse);
                     if (errorResponse.status === 404) {
                         setBooksNotFound(true);
                     }

@@ -312,8 +312,541 @@ export const allCategoriesAlphabeticalList = {
     ],
     fList : [
         {
+            "title": "FR Beaux-Arts",
+            "route": "genre/FR Beaux-Arts",
+        },
+        {
+            "title": "FR Biographie, Mémoires, Journal intime, Correspondance",
+            "route": "genre/FR Biographie, Mémoires, Journal intime, Correspondance",
+        },
+        {
+            "title": "FR Chansons",
+            "route": "genre/FR Chansons",
+        },
+        {
+            "title": "FR Chroniques",
+            "route": "genre/FR Chroniques",
+        },
+        {
+            "title": "FR Contes",
+            "route": "genre/FR Contes",
+        },
+        {
+            "title": "FR Droit et Justice",
+            "route": "genre/FR Droit et Justice",
+        },
+        {
+            "title": "FR Education et Enseignement",
+            "route": "genre/FR Education et Enseignement",
+        },
+        {
+            "title": "FR Femmes",
+            "route": "genre/FR Femmes",
+        },
+        {
+            "title": "FR Guerres",
+            "route": "genre/FR Guerres",
+        },
+        {
+            "title": "FR Histoire",
+            "route": "genre/FR Histoire",
+        },
+        {
+            "title": "FR Humour",
+            "route": "genre/FR Humour",
+        },
+        {
+            "title": "FR Illustrateurs",
+            "route": "genre/FR Illustrateurs",
+        },
+        {
+            "title": "FR Jeunesse",
+            "route": "genre/FR Jeunesse",
+        },
+        {
+            "title": "FR Langues",
+            "route": "genre/FR Langues",
+        },
+        {
+            "title": "FR La Première Guerre Mondiale, 1914-1918",
+            "route": "genre/FR La Première Guerre Mondiale, 1914-1918",
+        },
+        {
+            "title": "FR Littérature",
+            "route": "genre/FR Littérature",
+        },
+        {
+            "title": "FR Littérature francophone",
+            "route": "genre/FR Littérature francophone",
+        },
+        {
+            "title": "FR Livres, Collections et Bibliophilie",
+            "route": "genre/FR Livres, Collections et Bibliophilie",
+        },
+        {
+            "title": "FR Musique",
+            "route": "genre/FR Musique",
+        },
+        {
+            "title": "FR Métiers et Artisanat",
+            "route": "genre/FR Métiers et Artisanat",
+        },
+        {
+            "title": "FR Nouveautés",
+            "route": "genre/FR Nouveautés",
+        },
+        {
+            "title": "FR Nouvelles",
+            "route": "genre/FR Nouvelles",
+        },
+        {
+            "title": "FR Occultisme",
+            "route": "genre/FR Occultisme",
+        },
+        {
+            "title": "FR Peinture",
+            "route": "genre/FR Peinture",
+        },
+        {
+            "title": "FR Peuples et Sociétés",
+            "route": "genre/FR Peuples et Sociétés",
+        },
+        {
+            "title": "FR Philosophie, Religion et Morale",
+            "route": "genre/FR Philosophie, Religion et Morale",
+        },
+        {
+            "title": "FR Politique",
+            "route": "genre/FR Politique",
+        },
+        {
+            "title": "FR Poésie",
+            "route": "genre/FR Poésie",
+        },
+        {
+            "title": "FR Presse",
+            "route": "genre/FR Presse",
+        },
+        {
+            "title": "FR Prix Nobel",
+            "route": "genre/FR Prix Nobel",
+        },
+        {
+            "title": "FR Sciences et Techniques",
+            "route": "genre/FR Sciences et Techniques",
+        },
+        {
+            "title": "FR Science fiction",
+            "route": "genre/FR Science fiction",
+        },
+        {
+            "title": "FR Services publics",
+            "route": "genre/FR Services publics",
+        },
+        {
+            "title": "FR Sports et loisirs",
+            "route": "genre/FR Sports et loisirs",
+        },
+        {
+            "title": "FR Séduction et libertinage",
+            "route": "genre/FR Séduction et libertinage",
+        },
+        {
+            "title": "FR Théâtre",
+            "route": "genre/FR Théâtre",
+        },
+        {
+            "title": "FR Villes",
+            "route": "genre/FR Villes",
+        },
+        {
+            "title": "FR Voyages et pays",
+            "route": "genre/FR Voyages et pays",
+        },
+        {
+            "title": "Famous Scots Series",
+            "route": "genre/Famous Scots Series",
+        },
+        {
+            "title": "Fantasy",
+            "route": "genre/Fantasy",
+        },
+        {
+            "title": "Folklore",
+            "route": "genre/Folklore",
+        },
+        {
+            "title": "Forestry",
+            "route": "genre/Forestry",
+        },
+        {
+            "title": "France",
+            "route": "genre/France",
+        },
+    ],
+    gList : [
+        {
+            "title": "Garden and Forest",
+            "route": "genre/Garden and Forest",
+        },
+        {
+            "title": "General Fiction",
+            "route": "genre/General Fiction",
+        },
+        {
+            "title": "Geology",
+            "route": "genre/Geology",
+        },
+        {
+            "title": "Germany",
+            "route": "genre/Germany",
+        },
+        {
+            "title": "German Language Books",
+            "route": "genre/German Language Books",
+        },
+        {
+            "title": "Godey's Lady's Book",
+            "route": "genre/Godey's Lady's Book",
+        },
+        {
+            "title": "Golden Days for Boys and Girls",
+            "route": "genre/Golden Days for Boys and Girls",
+        },
+        {
+            "title": "Gothic Fiction",
+            "route": "genre/Gothic Fiction",
+        },
+        {
+            "title": "Graham's Magazine",
+            "route": "genre/Graham's Magazine",
+        },
+        {
+            "title": "Greece",
+            "route": "genre/Greece",
+        },
+    ],
+    hList : [
+        {
+            "title": "Harper's New Monthly Magazine",
+            "route": "genre/Harper's New Monthly Magazine",
+        },
+        {
+            "title": "Harper's Young People",
+            "route": "genre/Harper's Young People",
+        },
+        {
+            "title": "Harvard Classics",
+            "route": "genre/Harvard Classics",
+        },
+        {
+            "title": "Hinduism",
+            "route": "genre/Hinduism",
+        },
+        {
+            "title": "Historical Fiction",
+            "route": "genre/Historical Fiction",
+        },
+        {
+            "title": "Horror",
+            "route": "genre/Horror",
+        },
+        {
+            "title": "Horticulture",
+            "route": "genre/Horticulture",
+        },
+        {
+            "title": "Humor",
+            "route": "genre/Humor",
+        },
+    ],
+    iList : [
+        {
+            "title": "IT Agraria",
+            "route": "genre/IT Agraria",
+        },
+        {
+            "title": "IT Archeologia e Storia dell'arte",
+            "route": "genre/IT Archeologia e Storia dell'arte",
+        },
+        {
+            "title": "IT Architettura",
+            "route": "genre/IT Architettura",
+        },
+        {
+            "title": "IT Arte varia",
+            "route": "genre/IT Arte varia",
+        },
+        {
+            "title": "IT Biografie",
+            "route": "genre/IT Biografie",
+        },
+        {
+            "title": "IT Botanica",
+            "route": "genre/IT Botanica",
+        },
+        {
+            "title": "IT Cucina",
+            "route": "genre/IT Cucina",
+        },
+        {
+            "title": "IT Discorsi e Orazioni",
+            "route": "genre/IT Discorsi e Orazioni",
+        },
+        {
+            "title": "IT Economia",
+            "route": "genre/IT Economia",
+        },
+        {
+            "title": "IT Filosofia",
+            "route": "genre/IT Filosofia",
+        },
+        {
+            "title": "IT Folklore",
+            "route": "genre/IT Folklore",
+        },
+        {
+            "title": "IT Geografia",
+            "route": "genre/IT Geografia",
+        },
+        {
+            "title": "IT Legge",
+            "route": "genre/IT Legge",
+        },
+        {
+            "title": "IT Letteratura",
+            "route": "genre/IT Letteratura",
+        },
+        {
+            "title": "IT Letteratura per ragazzi",
+            "route": "genre/IT Letteratura per ragazzi",
+        },
+        {
+            "title": "IT Linguistica",
+            "route": "genre/IT Linguistica",
+        },
+        {
+            "title": "IT Miscellanea",
+            "route": "genre/IT Miscellanea",
+        },
+        {
+            "title": "IT Musica",
+            "route": "genre/IT Musica",
+        },
+        {
+            "title": "IT Narrativa varia",
+            "route": "genre/IT Narrativa varia",
+        },
+        {
+            "title": "IT Numismatica",
+            "route": "genre/IT Numismatica",
+        },
+        {
+            "title": "IT Poesia",
+            "route": "genre/IT Poesia",
+        },
+        {
+            "title": "IT Psicologia e Sociologia",
+            "route": "genre/IT Psicologia e Sociologia",
+        },
+        {
+            "title": "IT Racconti",
+            "route": "genre/IT Racconti",
+        },
+        {
+            "title": "IT Religione e Spiritualità",
+            "route": "genre/IT Religione e Spiritualità",
+        },
+        {
+            "title": "IT Romanzi",
+            "route": "genre/IT Romanzi",
+        },
+        {
+            "title": "IT Romanzi storici",
+            "route": "genre/IT Romanzi storici",
+        },
+        {
+            "title": "IT Salute",
+            "route": "genre/IT Salute",
+        },
+        {
+            "title": "IT Scienza",
+            "route": "genre/IT Scienza",
+        },
+        {
+            "title": "IT Scienze militari",
+            "route": "genre/IT Scienze militari",
+        },
+        {
+            "title": "IT Scienze politiche",
+            "route": "genre/IT Scienze politiche",
+        },
+        {
+            "title": "IT Storia",
+            "route": "genre/IT Storia",
+        },
+        {
+            "title": "IT Teatro dialettale",
+            "route": "genre/IT Teatro dialettale",
+        },
+        {
+            "title": "IT Teatro in prosa",
+            "route": "genre/IT Teatro in prosa",
+        },
+        {
+            "title": "IT Teatro in versi",
+            "route": "genre/IT Teatro in versi",
+        },
+        {
+            "title": "IT Tecnologia",
+            "route": "genre/IT Tecnologia",
+        },
+        {
+            "title": "IT Umorismo",
+            "route": "genre/IT Umorismo",
+        },
+        {
+            "title": "IT Viaggi",
+            "route": "genre/IT Viaggi",
+        },
+        {
+            "title": "India",
+            "route": "genre/India",
+        },
+        {
+            "title": "Illustrators",
+            "route": "genre/Illustrators",
+        },
+        {
+            "title": "Islam",
+            "route": "genre/Islam",
+        },
+        {
+            "title": "Italy",
+            "route": "genre/Italy",
+        },
+    ],
+    jList : [
+        {
+            "title": "Judaism",
+            "route": "genre/Judaism",
+        },
+        {
+            "title": "Journal of Entomology and Zoology",
+            "route": "genre/Journal of Entomology and Zoology",
+        },
+    ],
+    lList : [
+        {
+            "title": "L'Illustration",
+            "route": "genre/L'Illustration",
+        },
+        {
+            "title": "Language Education",
+            "route": "genre/Language Education",
+        },
+        {
+            "title": "Latter Day Saints",
+            "route": "genre/Latter Day Saints",
+        },
+        {
+            "title": "Lippincott's Magazine",
+            "route": "genre/Lippincott's Magazine",
+        },
+        {
+            "title": "Little Folks",
+            "route": "genre/Little Folks",
+        },
+        {
+            "title": "London Medical Gazette",
+            "route": "genre/London Medical Gazette",
+        },
+        {
+            "title": "Love",
+            "route": "genre/Love",
+        },
+    ],
+    mList : [
+        {
             "title": "",
             "route": "genre/",
         },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+        {
+            "title": "",
+            "route": "genre/",
+        },
+
     ]
 }
