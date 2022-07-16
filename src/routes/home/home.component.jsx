@@ -13,6 +13,8 @@ import ButtonComponent from "../../components/button/button.component";
 import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.component";
 import SearchNotFound from "../../components/searchNotFound/SearchNotFound.component";
 import AllCategoriesListComponent from "../../components/allCategoriesListComponent/AllCategoriesListComponent.component";
+import CategorySearchAndAutoComplete from "../../components/categorySearchAndAutoComplete/CategorySearchAndAutoComplete.component";
+import LoadingSkeleton from "../../components/loadingSkeleton/LoadingSkeleton.component";
 
 const Home = () => {
 
@@ -61,6 +63,7 @@ const Home = () => {
                 }
             </Masonry>
             <Typography variant="h5" align="center" gutterBottom>Explore our entire range of Categories</Typography>
+            <CategorySearchAndAutoComplete />
             <AllCategoriesListComponent />
             {/* <Typography variant="h5" align="center" gutterBottom>Reached the End of the Line? No worries, more categories are on the way. Stay Tuned!</Typography> */}
         </Container>

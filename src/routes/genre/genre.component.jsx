@@ -10,6 +10,7 @@ import LoadingBackdrop from "../../components/loadingBackDrop/LoadingBackDrop.co
 import SearchNotFound from "../../components/searchNotFound/SearchNotFound.component";
 import { useEffect, useState } from "react";
 import NextBooksNotFoundComponent from "../../components/nextBooksNotFoundComponent/NextBooksNotFoundComponent.component";
+import LoadingSkeleton from "../../components/loadingSkeleton/LoadingSkeleton.component";
 
 const Genre = () => {
 
@@ -53,7 +54,13 @@ const Genre = () => {
                 isFullPageLoading && <LoadingBackdrop />
             }
             {
+                isFullPageLoading && <LoadingSkeleton />
+            }
+            {
                 isSearchSubmit && isFullPageLoading && <LoadingBackdrop />
+            }
+            {
+                isSearchSubmit && isFullPageLoading && <LoadingSkeleton />
             }
             {
                 isSearchSubmit && !searchBtnClose && genrePageSearchSubmit && (
@@ -79,16 +86,15 @@ const Genre = () => {
                 )
             }
             {
-                searchBtnClose && isFullPageLoading && <LoadingBackdrop /> 
+                searchBtnClose && isFullPageLoading && <LoadingBackdrop />
+            }
+            {
+                searchBtnClose && isFullPageLoading && <LoadingSkeleton />
             }
             {
                 (!isSearchSubmit || (searchBtnClose && genrePageLoad)) && (
                     <Fragment>
-                        {
-                            isLoading ? 
-                            <BooksList infiniteScrollEnable={false}/> :
-                            <BooksList infiniteScrollEnable={true}/>
-                        }                       
+                        <BooksList />
                         <Container align="center" style={{ paddingTop: '20px' }}>
                             {isLoading && <CircularProgress />}
                         </Container>

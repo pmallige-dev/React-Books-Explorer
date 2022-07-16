@@ -1,52 +1,4 @@
-export const allCategories = [
-    {
-        "title": "Classics",
-        "route": "genre/Classics", 
-    },
-    {
-        "title": "Crime",
-        "route": "genre/Crime", 
-    },
-    {
-        "title": "Children",
-        "route": "genre/Children", 
-    },
-    {
-        "title": "Education",
-        "route": "genre/Education", 
-    },
-    {
-        "title": "Geography",
-        "route": "genre/Geography", 
-    },
-    {
-        "title": "History",
-        "route": "genre/History", 
-    },
-    {
-        "title": "Law",
-        "route": "genre/Law", 
-    },
-    {
-        "title": "Music",
-        "route": "genre/Music", 
-    },
-    {
-        "title": "Religion",
-        "route": "genre/Religion", 
-    },
-    {
-        "title": "Science",
-        "route": "genre/Science", 
-    },
-    {
-        "title": "Technology",
-        "route": "genre/Technology",
-    },
-    {
-        "title": "Wars",
-        "route": "genre/Wars", 
-    },
+export const allCategories = [  
     {
         "title": "Adventure",
         "route": "genre/Adventure",
@@ -192,6 +144,10 @@ export const allCategories = [
         "route": "genre/Child's Own Book of Great Musicians",
     },
     {
+        "title": "Children",
+        "route": "genre/Children", 
+    },
+    {
         "title": "Children's Anthologies",
         "route": "genre/Children's Anthologies",
     },
@@ -244,6 +200,10 @@ export const allCategories = [
         "route": "genre/Christmas",
     },
     {
+        "title": "Classics",
+        "route": "genre/Classics", 
+    },
+    {
         "title": "Classical Antiquity",
         "route": "genre/Classical Antiquity",
     },
@@ -262,6 +222,10 @@ export const allCategories = [
     {
         "title": "Crafts",
         "route": "genre/Crafts",
+    },
+    {
+        "title": "Crime",
+        "route": "genre/Crime", 
     },
     {
         "title": "Crime Fiction",
@@ -528,6 +492,10 @@ export const allCategories = [
         "route": "genre/General Fiction",
     },
     {
+        "title": "Geography",
+        "route": "genre/Geography", 
+    },
+    {
         "title": "Geology",
         "route": "genre/Geology",
     },
@@ -574,6 +542,10 @@ export const allCategories = [
     {
         "title": "Hinduism",
         "route": "genre/Hinduism",
+    },
+    {
+        "title": "History",
+        "route": "genre/History", 
     },
     {
         "title": "Historical Fiction",
@@ -774,6 +746,10 @@ export const allCategories = [
     {
         "title": "Latter Day Saints",
         "route": "genre/Latter Day Saints",
+    },
+    {
+        "title": "Law",
+        "route": "genre/Law", 
     },
     {
         "title": "Lippincott's Magazine",
@@ -1028,6 +1004,10 @@ export const allCategories = [
         "route": "genre/Reference",
     },
     {
+        "title": "Religion",
+        "route": "genre/Religion", 
+    },
+    {
         "title": "Romantic Fiction",
         "route": "genre/Romantic Fiction",
     },
@@ -1270,6 +1250,10 @@ export const allCategories = [
     {
         "title": "United States Law",
         "route": "genre/United States Law",
+    },
+    {
+        "title": "Wars",
+        "route": "genre/Wars", 
     },
     {
         "title": "Western",

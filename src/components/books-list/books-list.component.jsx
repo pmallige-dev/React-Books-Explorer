@@ -4,9 +4,9 @@ import BookComponent from "../book/book.component";
 import { Masonry } from "@mui/lab";
 import { Grid, Hidden } from "@mui/material";
 
-const BooksList = ({ infiniteScrollEnable }) => {
+const BooksList = () => {
 
-    const { categoryFilteredBookList, page, setPage, setCategoryBookList, setBooksNotFound } = useContext(BooksContext);
+    const { categoryFilteredBookList, setPage, setCategoryBookList} = useContext(BooksContext);
     const loader = useRef(null);
 
     const handleObserver = useCallback((entries) => {
@@ -31,6 +31,7 @@ const BooksList = ({ infiniteScrollEnable }) => {
         const observer = new IntersectionObserver(handleObserver, option);
         if (loader.current) observer.observe(loader.current);
     }, [handleObserver]);
+
 
     return (
         <Fragment>
@@ -58,12 +59,7 @@ const BooksList = ({ infiniteScrollEnable }) => {
                     ))}
                 </Masonry>
             </Hidden>
-
-            {
-                (infiniteScrollEnable) ?
-                    <div /> :
-                    <div ref={loader} />
-            }
+            <div ref={loader} />
         </Fragment>
     )
 }
