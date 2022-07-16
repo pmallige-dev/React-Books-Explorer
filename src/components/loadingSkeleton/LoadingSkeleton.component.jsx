@@ -79,10 +79,10 @@ const LoadingSkeleton = () => {
                                 paddingBottom: '10px'
                             }}
                         >
-                            {/* <Hidden smUp>
+                            <Hidden smUp>
                                 <Card>
                                     <CardContent>
-                                        <Skeleton variant="rectangular" width={320} height={250} />
+                                        <Skeleton variant="rectangular" width={250} height={250} />
                                         <Skeleton variant="text" />
                                         <Skeleton variant="text" />
                                         <div style={{
@@ -91,11 +91,11 @@ const LoadingSkeleton = () => {
                                         }}>
                                             <Skeleton variant="text" />
                                         </div>
-                                        <Skeleton variant="rectangular" width={320} height={30} />
+                                        <Skeleton variant="rectangular" width={250} height={30} />
                                     </CardContent>
                                 </Card>
-                            </Hidden> */}
-                            {/* <Hidden smDown> */}
+                            </Hidden>
+                            <Hidden smDown>
                                 <Card>
                                     <CardContent>
                                         <Skeleton variant="rectangular" width={230} height={250} />
@@ -110,7 +110,7 @@ const LoadingSkeleton = () => {
                                         <Skeleton variant="rectangular" width={230} height={30} />
                                     </CardContent>
                                 </Card>
-                            {/* </Hidden> */}
+                            </Hidden>
                         </Grid>
                     ))
                 }
