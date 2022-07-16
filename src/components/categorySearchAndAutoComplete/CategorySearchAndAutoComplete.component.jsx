@@ -34,7 +34,7 @@ const CategorySearchAndAutoComplete = () => {
                     (params) =>
                         <TextField
                             {...params}
-                            label="Categories"
+                            label="Search Categories"
                         />
                 }
             />
