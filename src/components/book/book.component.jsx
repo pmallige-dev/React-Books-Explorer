@@ -1,11 +1,15 @@
-import { Card, CardContent, CardMedia, Typography, CardActions, Button, Container } from "@mui/material";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { Card, CardContent, CardMedia, Typography, CardActions, Button, Container, Chip, ListItem, Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Fragment, useState } from "react";
 import BookAlertDialogBox from "../bookAlertDialogBox/bookAlertDialogBox.component";
+import { useContext } from "react";
+import { BooksContext } from "../../context/books.context";
 
 
 const BookComponent = ({ book }) => {
-    const { title, id, formats, authors, download_count } = book;
+    const { title, id, formats, authors, download_count, bookshelves } = book;
+    const { onCategorySelect } = useContext(BooksContext);
+    const navigate = useNavigate();
 
     const [open, setOpen] = useState(false);
 
@@ -16,6 +20,11 @@ const BookComponent = ({ book }) => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    // const chipClickHandler = () => {
+    //     navigate(`genre/${item}`);
+    //     onCategorySelect(item);
+    // }
 
 
     return (
@@ -41,6 +50,40 @@ const BookComponent = ({ book }) => {
                     <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
                         {(authors[0] || {}).name}
                     </Typography>
+                    {
+                        authors[1] &&
+                        <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
+                            {(authors[1] || {}).name}
+                        </Typography>
+                    }
+                    {
+                        authors[2] &&
+                        <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
+                            {(authors[2] || {}).name}
+                        </Typography>
+                    }
+                    {
+                        authors[3] &&
+                        <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
+                            {(authors[3] || {}).name}
+                        </Typography>
+                    }
+                    {/* {
+                        bookshelves && (
+                            <Typography sx={{ mb: 1.5 }} color="text.secondary" align="center">
+                                Categories
+                            </Typography>
+                        )
+                    } */}
+                    <Grid container spacing={1} style={{paddingBottom: '10px'}}>
+                        {
+                            bookshelves.map((item) => (
+                                <Grid item spacing={1} align="center">
+                                    <Chip label={item} variant="outlined" />
+                                </Grid>
+                            ))
+                        }
+                    </Grid>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" align="center" gutterBottom>
                         Views: {download_count}
                     </Typography>
