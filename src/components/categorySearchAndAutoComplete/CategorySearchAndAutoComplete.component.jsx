@@ -1,5 +1,5 @@
 import { allCategories } from "../../data/allCategories";
-import { Autocomplete, Container, TextField } from "@mui/material";
+import { Autocomplete, Container, FormControl, TextField } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useContext } from "react";
@@ -32,10 +32,12 @@ const CategorySearchAndAutoComplete = () => {
                 onChange={onChangeHandler}
                 renderInput={
                     (params) =>
-                        <TextField
-                            {...params}
-                            label="Search Categories"
-                        />
+                        <Container align="center">
+                            <TextField
+                                {...params}
+                                label="Search Categories"
+                            />
+                        </Container>
                 }
             />
         </Container>
