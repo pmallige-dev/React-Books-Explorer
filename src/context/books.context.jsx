@@ -228,9 +228,11 @@ export const BooksProvider = ({ children }) => {
     }
 
     function getAndSetStateSessionStoredCategorySelected(setCategorySelected) {
-        let sessionStoredCategory = sessionStorage.getItem('sessionStoredCategory');
-        let categorySpaceReplaced = sessionStoredCategory.replace(' ', '%20');
-        setCategorySelected(categorySpaceReplaced);
+        if (sessionStorage.getItem('sessionStoredCategory')) {
+            let sessionStoredCategory = sessionStorage.getItem('sessionStoredCategory');
+            let categorySpaceReplaced = sessionStoredCategory.replace(' ', '%20');
+            setCategorySelected(categorySpaceReplaced);
+        }
     }
 
     const value = {
