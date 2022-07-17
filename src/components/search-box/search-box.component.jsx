@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { BooksContext } from "../../context/books.context";
 import { TextField, Container, Typography } from "@mui/material";
 
-const SearchBox = ({ homePageSearch }) => {
+const SearchBox = ({ homePageSearch, genrePageSearch }) => {
 
     const { onSearchSubmit, onGenreSearchSubmit, onInputChange } = useContext(BooksContext);
 

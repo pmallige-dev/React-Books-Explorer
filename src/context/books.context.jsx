@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import { allCategories } from "../data/allCategories";
 
 export const BooksContext = createContext({
@@ -32,6 +33,7 @@ export const BooksProvider = ({ children }) => {
         homePageSearchSubmit: false,
         genrePageSearchSubmit: false,
         searchBtnClose: false,
+        genreSearchBtnClose: false,
         homePageLoad: false,
         searchStringNotFound: false,
         booksNotFound: false,
@@ -51,6 +53,7 @@ export const BooksProvider = ({ children }) => {
     const [homePageSearchSubmit, setHomePageSearchSubmit] = useState(initialState.homePageSearchSubmit);
     const [genrePageSearchSubmit, setGenrePageSearchSubmit] = useState(initialState.genrePageSearchSubmit);
     const [searchBtnClose, setSearchBtnClose] = useState(initialState.searchBtnClose);
+    const [genreSearchBtnClose, setGenreSearchBtnClose] = useState(initialState.genreSearchBtnClose);
     const [homePageLoad, setHomePageLoad] = useState(initialState.homePageLoad);
     const [searchStringNotFound, setSearchStringNotFound] = useState(initialState.searchStringNotFound);
     const [booksNotFound, setBooksNotFound] = useState(initialState.booksNotFound);
@@ -60,6 +63,7 @@ export const BooksProvider = ({ children }) => {
     const urlSearchParamsForCategory = `?search=${searchField}&topic=${categorySelected}`;
     const urlCategoryParams = `/?page=${page}&topic=${categorySelected}`;
     const windowUrl = decodeURI(window.location.href);
+    const navigate = useNavigate();
 
     // To fetch Books 
     useEffect(() => {
@@ -93,7 +97,7 @@ export const BooksProvider = ({ children }) => {
 
     const fetchBooks = async () => {
         try {
-            if (categorySelected !== '' && nextPageStatus) {
+            if (categorySelected !== '' && (nextPageStatus || page === 1)) {
                 setIsLoading(initialState.isLoading);
                 try {
                     const fetchUrl = await axios.get(`${mainUrl}${urlCategoryParams}`);
@@ -195,6 +199,7 @@ export const BooksProvider = ({ children }) => {
         setGenrePageSearchSubmit(true)
         setSearchBtnClose(initialState.searchBtnClose);
         setPage(initialState.page);
+        navigate(`/searchGenre/${searchField}`);
         fetchingBooksFromAPIBasedOnSearchAndCategory();
     };
 
@@ -208,10 +213,18 @@ export const BooksProvider = ({ children }) => {
         window.scrollTo(0, 0);
     }
 
+    const onGenreSearchBtnCloseClick = () => {
+        setSearchBtnClose(true);
+        navigate(`/genre/${categorySelected}`);
+        setIsSearchSubmit(initialState.isSearchSubmit);
+        window.scrollTo(0, 0);
+    }
+
     const resetSearchWithCategorySelected = () => {
         setCategoryBookList(initialState.categoryBookList);
         setPage(initialState.page);
         setIsFullPageLoading(initialState.isFullPageLoading);
+        setGenreSearchBtnClose(true);
         fetchBooks();
     }
 
@@ -230,6 +243,7 @@ export const BooksProvider = ({ children }) => {
         onInputChange,
         onSearchSubmit,
         onGenreSearchSubmit,
+        onGenreSearchBtnCloseClick,
         onSearchBookListCompLoad,
         isLoading,
         isFullPageLoading,

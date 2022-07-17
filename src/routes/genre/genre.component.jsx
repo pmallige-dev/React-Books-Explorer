@@ -49,7 +49,7 @@ const Genre = () => {
                     categorySelected.replace('%20', ' ')
                 }
             </Typography>
-            <SearchBox />
+            <SearchBox genrePageSearch={true}/>
             {
                 isFullPageLoading && <LoadingBackdrop />
             }
@@ -62,7 +62,7 @@ const Genre = () => {
             {
                 isSearchSubmit && isFullPageLoading && <LoadingSkeleton />
             }
-            {
+            {/* {
                 isSearchSubmit && !searchBtnClose && genrePageSearchSubmit && (
                     <Fragment>
                         <ButtonComponent
@@ -84,7 +84,7 @@ const Genre = () => {
                         />
                     </Fragment>
                 )
-            }
+            } */}
             {
                 searchBtnClose && isFullPageLoading && <LoadingBackdrop />
             }
