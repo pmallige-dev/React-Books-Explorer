@@ -22,6 +22,7 @@ export const BooksProvider = ({ children }) => {
         isLoading: true,
         isFullPageLoading: true,
         searchField: '',
+        displaySearchField: '',
         bookList: [],
         categoryBookList: [],
         searchBookList: [],
@@ -64,6 +65,7 @@ export const BooksProvider = ({ children }) => {
     const urlCategoryParams = `/?page=${page}&topic=${categorySelected}`;
     const windowUrl = decodeURI(window.location.href);
     const navigate = useNavigate();
+    let searchFieldString = '';
 
     // To fetch Books 
     useEffect(() => {
@@ -72,11 +74,7 @@ export const BooksProvider = ({ children }) => {
 
     // To set the category selected as the category we see in the URL so that the respective books are displayed upon page load/refresh
     useEffect(() => {
-        allCategories.map((category) => {
-            if (windowUrl.includes(category.title)) {
-                setCategorySelected(category.title);
-            }
-        })
+        getAndSetStateSessionStoredCategorySelected(setCategorySelected);
     }, []);
 
     // To display list of books based on Category Selected
@@ -173,11 +171,12 @@ export const BooksProvider = ({ children }) => {
         setIsLoading(initialState.isLoading);
         setIsFullPageLoading(initialState.isFullPageLoading);
         setNextPageStatus(initialState.nextPageStatus);
-        setCategorySelected(category.replace(' ', '%20'));
+        sessionStorage.setItem('sessionStoredCategory', category);
+        getAndSetStateSessionStoredCategorySelected(setCategorySelected);
     }
 
     const onInputChange = (event) => {
-        const searchFieldString = event.target.value.replace(' ', '%20');
+        searchFieldString = event.target.value.replace(' ', '%20');
         setSearchField(searchFieldString);
     }
 
@@ -226,6 +225,12 @@ export const BooksProvider = ({ children }) => {
         setIsFullPageLoading(initialState.isFullPageLoading);
         setGenreSearchBtnClose(true);
         fetchBooks();
+    }
+
+    function getAndSetStateSessionStoredCategorySelected(setCategorySelected) {
+        let sessionStoredCategory = sessionStorage.getItem('sessionStoredCategory');
+        let categorySpaceReplaced = sessionStoredCategory.replace(' ', '%20');
+        setCategorySelected(categorySpaceReplaced);
     }
 
     const value = {

@@ -7,27 +7,31 @@ import LoadingSkeleton from "../../components/loadingSkeleton/LoadingSkeleton.co
 import { Fragment, useContext } from "react";
 import { BooksContext } from "../../context/books.context";
 import { Typography } from "@mui/material";
+import { useNavigate } from "react-router";
 
 const SearchGenreBooks = () => {
 
     const {
-        isLoading,
         isFullPageLoading,
         isSearchSubmit,
         genrePageSearchSubmit,
         categorySelected,
         searchBtnClose,
-        onSearchBtnCloseClick,
         onGenreSearchBtnCloseClick,
         resetSearchWithCategorySelected,
         searchField,
-        searchStringNotFound,
-        booksNotFound
+        searchStringNotFound    
     } = useContext(BooksContext);
+
+    const navigate = useNavigate();
 
     const btnOnClickHandler = () => {
         onGenreSearchBtnCloseClick();
         resetSearchWithCategorySelected();
+    }
+
+    window.onload = function navigateBack () {
+        navigate(`/genre/${categorySelected}`);
     }
 
     return (
