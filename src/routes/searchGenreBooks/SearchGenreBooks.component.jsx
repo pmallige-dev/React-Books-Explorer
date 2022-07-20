@@ -20,7 +20,7 @@ const SearchGenreBooks = () => {
         onGenreSearchBtnCloseClick,
         resetSearchWithCategorySelected,
         searchField,
-        searchStringNotFound    
+        searchStringNotFound
     } = useContext(BooksContext);
 
     const navigate = useNavigate();
@@ -30,7 +30,20 @@ const SearchGenreBooks = () => {
         resetSearchWithCategorySelected();
     }
 
-    window.onload = function navigateBack () {
+    // (function () {
+    //     window.onpageshow = function (event) {
+    //         if (event.persisted) {
+    //             window.location.reload()
+    //         }
+    //     };
+    // })();
+
+    if (!!window.performance && window.performance.navigation.type === 2) {
+        console.log('Reloading');
+        window.location.reload();
+    }
+
+    window.onload = function navigateBack() {
         navigate(`/genre/${categorySelected}`);
     }
 

@@ -32,15 +32,31 @@ const Genre = () => {
     useEffect(() => {
         setGenrePageLoad(true);
 
+        window.onpopstate = e => {
+            window.location.reload()
+        }
+
+        window.onpushstate = e => {
+            window.location.reload()
+        }
+
         return () => {
             setGenrePageLoad(false);
         }
     }, []);
 
-    const btnOnClickHandler = () => {
-        onSearchBtnCloseClick();
-        resetSearchWithCategorySelected();
-    }
+    // (function () {
+    //     window.onpageshow = function (event) {
+    //         if (event.persisted) {
+    //             window.location.reload()
+    //         }
+    //     };
+    // })();
+
+    // const btnOnClickHandler = () => {
+    //     onSearchBtnCloseClick();
+    //     resetSearchWithCategorySelected();
+    // }
 
     return (
         <Container>
@@ -49,7 +65,7 @@ const Genre = () => {
                     categorySelected.replace('%20', ' ')
                 }
             </Typography>
-            <SearchBox genrePageSearch={true}/>
+            <SearchBox genrePageSearch={true} />
             {
                 isFullPageLoading && <LoadingBackdrop />
             }
